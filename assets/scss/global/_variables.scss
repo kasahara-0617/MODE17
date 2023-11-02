@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+//////////////////////////////
+// color
+//////////////////////////////
+$black: #222;
+$white: #fff;
+
+//////////////////////////////
+// font
+//////////////////////////////
+$en: "Helvetica Neue",
+  "Helvetica",
+  "Hiragino Sans",
+  "Hiragino Kaku Gothic ProN",
+  "Arial",
+  "Yu Gothic",
+  "Meiryo",
+  sans-serif;
+$jp: "Helvetica Neue",
+  "Helvetica",
+  "Hiragino Sans",
+  "Hiragino Kaku Gothic ProN",
+  "Arial",
+  "Yu Gothic",
+  "Meiryo",
+  sans-serif;
+
+//////////////////////////////
+// ease
+//////////////////////////////
+$ease1: cubic-bezier(0.33, 1, 0.68, 1);
