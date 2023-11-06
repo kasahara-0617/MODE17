@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="_レイヤー_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1{fill:#333;stroke-width:0px;}</style></defs><path class="cls-1" d="m16.24,16.62l.64-.64v-2.27h3.82v5.68c0,5.5-4.47,9.97-9.97,9.97h-3.57v.64h3.57c5.85,0,10.6-4.76,10.6-10.6v-6.31h-5.09v3.54h0Z"/><path class="cls-1" d="m21.26,2c-5.97,0-10.82,4.85-10.82,10.82v6.86l.64-.64v-6.23c0-5.61,4.57-10.18,10.18-10.18h3.57v-.64h-3.57Z"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+		<defs>
+			<style>
+				path {
+					fill: #333; <!-- ライトモード -->
+					stroke-width:0px;
+				}
+				@media (prefers-color-scheme: dark) {
+					path {
+						fill: #fff; <!-- ダークモード -->
+					}
+				}
+			</style>
+		</defs>
+	<path d="m16.24,16.62l.64-.64v-2.27h3.82v5.68c0,5.5-4.47,9.97-9.97,9.97h-3.57v.64h3.57c5.85,0,10.6-4.76,10.6-10.6v-6.31h-5.09v3.54h0Z"/><path d="m21.26,2c-5.97,0-10.82,4.85-10.82,10.82v6.86l.64-.64v-6.23c0-5.61,4.57-10.18,10.18-10.18h3.57v-.64h-3.57Z"/></svg>
