@@ -82,4 +82,9 @@ img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */
