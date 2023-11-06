@@ -6,14 +6,6 @@ import {
   defineComponent,
 } from "https://unpkg.com/vue@3.2.4/dist/vue.esm-browser.prod.js";
 
-const Header = defineComponent({
-  template: `
-        <header id="header">
-          <h1>TITLE</h1>
-        </header>
-      `,
-});
-
 const Footer = defineComponent({
   template: `
         <footer id="footer">
@@ -23,7 +15,6 @@ const Footer = defineComponent({
 });
 
 const app = createApp({});
-app.component("the-header", Header);
 app.component("the-footer", Footer);
 app.mount("#app");
 
@@ -41,4 +32,15 @@ const adjustViewport = (triggerWindowWidth = 370) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   adjustViewport(); // 引数に画面幅の数値を与えると、その値が画面幅が縮小される起点になる
+});
+
+/* --------------------------------
+ *  Disable Empty a Tag
+ * -------------------------------- */
+const anchorElements = document.querySelectorAll('a[href=""]');
+anchorElements.forEach((element) => {
+  element.addEventListener("click", (event) => {
+    event.preventDefault();
+    alert("リンク先がありません");
+  });
 });
