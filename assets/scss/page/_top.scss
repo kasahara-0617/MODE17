@@ -1,6 +1,10 @@
 @charset "UTF-8";
 @use "../global/" as *;
+@use "../common/component" as *;
 
+/* --------------------------------
+* hero
+* -------------------------------- */
 .hero {
   display: flex;
   align-items: center;
@@ -8,4 +12,50 @@
   width: 100%;
   height: 100vh;
   background-color: $black;
+}
+
+/* --------------------------------
+* philosophy
+* -------------------------------- */
+.philosophy {
+  display: grid;
+  grid-template-areas:
+    "title title"
+    "img   content"
+    "img   content";
+  grid-template-columns: 1fr 40%;
+  margin: remCalc(64) remCalc(80) remCalc(224) 0;
+
+  &__title {
+    grid-area: title;
+    justify-self: flex-end;
+    @include title;
+  }
+
+  &__content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    // padding-right: remCalc(160);
+
+    &__copy {
+      align-self: flex-start;
+      margin-top: remCalc(192);
+      margin-bottom: remCalc(48);
+      font-family: $jp;
+      font-size: remCalc(20);
+      font-weight: 500;
+      line-height: 2.2;
+    }
+
+    &__text {
+      width: remCalc(447);
+      font-family: $jp;
+      font-size: remCalc(14);
+      font-weight: 300;
+      line-height: 2.2;
+      white-space: normal;
+      text-align: justify;
+    }
+  }
 }

@@ -84,6 +84,9 @@ img {
   vertical-align: middle;
 }
 
+/* --------------------------------
+* hero
+* -------------------------------- */
 .hero {
   display: flex;
   align-items: center;
@@ -91,4 +94,44 @@ img {
   width: 100%;
   height: 100vh;
   background-color: #333;
+}
+
+/* --------------------------------
+* philosophy
+* -------------------------------- */
+.philosophy {
+  display: grid;
+  grid-template-areas: "title title" "img   content" "img   content";
+  grid-template-columns: 1fr 40%;
+  margin: 4rem 5rem 14rem 0;
+}
+.philosophy__title {
+  grid-area: title;
+  justify-self: flex-end;
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+}
+.philosophy__content {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+}
+.philosophy__content__copy {
+  align-self: flex-start;
+  margin-top: 12rem;
+  margin-bottom: 3rem;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 2.2;
+}
+.philosophy__content__text {
+  width: 27.9375rem;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 2.2;
+  white-space: normal;
+  text-align: justify;
 }/*# sourceMappingURL=style.css.map */
