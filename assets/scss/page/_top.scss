@@ -21,7 +21,6 @@
   display: grid;
   grid-template-areas:
     "title title"
-    "img   content"
     "img   content";
   grid-template-columns: 1fr 40%;
   padding: remCalc(64) remCalc(80) remCalc(224) 0;
@@ -59,10 +58,12 @@
 .catalog01 {
   display: grid;
   grid-template-areas:
-    "title   title"
-    "img01   img02"
-    "img01   img02";
-  gap: remCalc(88) remCalc(136);
+    "title     title"
+    "imgLeft   imgRight";
+  gap: remCalc(88) remCalc(176);
+  padding: remCalc(80) 0 remCalc(120) remCalc(80);
+  color: $black;
+  background-color: $white;
 
   &__title {
     grid-area: title;
@@ -74,15 +75,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    row-gap: remCalc(8);
 
     &:first-child {
-      grid-area: img01;
+      grid-area: imgLeft;
       justify-self: flex-end;
     }
 
     &:last-child {
-      grid-area: img02;
+      grid-area: imgRight;
       justify-self: flex-start;
+      margin-top: remCalc(260);
     }
 
     &__img {
@@ -96,5 +99,26 @@
         object-fit: cover;
       }
     }
+
+    &__name {
+      font-family: $en;
+      font-size: remCalc(13);
+      font-weight: 300;
+    }
+  }
+}
+
+/* --------------------------------
+* sdg
+* -------------------------------- */
+.sdg {
+  display: grid;
+  grid-template-areas:
+    "title   title   title"
+    "imgLeft content imgRight";
+  color: $black;
+  background-color: $white;
+
+  &__title {
   }
 }

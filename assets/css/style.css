@@ -101,7 +101,7 @@ img {
 * -------------------------------- */
 .philosophy {
   display: grid;
-  grid-template-areas: "title title" "img   content" "img   content";
+  grid-template-areas: "title title" "img   content";
   grid-template-columns: 1fr 40%;
   padding: 4rem 5rem 14rem 0;
 }
@@ -140,8 +140,11 @@ img {
 * -------------------------------- */
 .catalog01 {
   display: grid;
-  grid-template-areas: "title   title" "img01   img02" "img01   img02";
-  gap: 5.5rem 8.5rem;
+  grid-template-areas: "title     title" "imgLeft   imgRight";
+  gap: 5.5rem 11rem;
+  padding: 5rem 0 7.5rem 5rem;
+  color: #333;
+  background-color: #fff;
 }
 .catalog01__title {
   grid-area: title;
@@ -154,14 +157,16 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  row-gap: 0.5rem;
 }
 .catalog01__content:first-child {
-  grid-area: img01;
+  grid-area: imgLeft;
   justify-self: flex-end;
 }
 .catalog01__content:last-child {
-  grid-area: img02;
+  grid-area: imgRight;
   justify-self: flex-start;
+  margin-top: 16.25rem;
 }
 .catalog01__content__img {
   width: 100%;
@@ -173,4 +178,19 @@ img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.catalog01__content__name {
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+}
+
+/* --------------------------------
+* sdg
+* -------------------------------- */
+.sdg {
+  display: grid;
+  grid-template-areas: "title   title   title" "imgLeft content imgRight";
+  color: #333;
+  background-color: #fff;
 }/*# sourceMappingURL=style.css.map */
