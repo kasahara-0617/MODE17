@@ -24,7 +24,7 @@
     "img   content"
     "img   content";
   grid-template-columns: 1fr 40%;
-  margin: remCalc(64) remCalc(80) remCalc(224) 0;
+  padding: remCalc(64) remCalc(80) remCalc(224) 0;
 
   &__title {
     grid-area: title;
@@ -36,12 +36,10 @@
     grid-area: content;
     display: flex;
     flex-direction: column;
-    // padding-right: remCalc(160);
 
     &__copy {
       align-self: flex-start;
-      margin-top: remCalc(192);
-      margin-bottom: remCalc(48);
+      margin: remCalc(192) 0 remCalc(48);
       font-family: $jp;
       font-size: remCalc(20);
       font-weight: 500;
@@ -49,13 +47,54 @@
     }
 
     &__text {
-      width: remCalc(447);
-      font-family: $jp;
-      font-size: remCalc(14);
-      font-weight: 300;
-      line-height: 2.2;
-      white-space: normal;
-      text-align: justify;
+      width: remCalc(448);
+      @include text;
+    }
+  }
+}
+
+/* --------------------------------
+* catalog01
+* -------------------------------- */
+.catalog01 {
+  display: grid;
+  grid-template-areas:
+    "title   title"
+    "img01   img02"
+    "img01   img02";
+  gap: remCalc(88) remCalc(136);
+
+  &__title {
+    grid-area: title;
+    justify-self: flex-start;
+    @include title;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &:first-child {
+      grid-area: img01;
+      justify-self: flex-end;
+    }
+
+    &:last-child {
+      grid-area: img02;
+      justify-self: flex-start;
+    }
+
+    &__img {
+      width: 100%;
+      max-width: remCalc(392);
+      aspect-ratio: 7/10;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }

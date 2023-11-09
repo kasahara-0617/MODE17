@@ -15,3 +15,15 @@
   font-size: remCalc(13);
   font-weight: 300;
 }
+
+//////////////////////////////
+// text
+//////////////////////////////
+@mixin text {
+  font-family: $jp;
+  font-size: remCalc(14);
+  font-weight: 300;
+  line-height: 2.2;
+  white-space: normal;
+  text-align: justify;
+}

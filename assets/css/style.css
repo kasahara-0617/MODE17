@@ -37,13 +37,13 @@ body::-webkit-scrollbar {
 }
 
 ::-moz-selection {
-  color: #fff;
-  background: #333;
+  color: #333;
+  background: #fff;
 }
 
 ::selection {
-  color: #fff;
-  background: #333;
+  color: #333;
+  background: #fff;
 }
 
 img,
@@ -103,7 +103,7 @@ img {
   display: grid;
   grid-template-areas: "title title" "img   content" "img   content";
   grid-template-columns: 1fr 40%;
-  margin: 4rem 5rem 14rem 0;
+  padding: 4rem 5rem 14rem 0;
 }
 .philosophy__title {
   grid-area: title;
@@ -119,19 +119,58 @@ img {
 }
 .philosophy__content__copy {
   align-self: flex-start;
-  margin-top: 12rem;
-  margin-bottom: 3rem;
+  margin: 12rem 0 3rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 2.2;
 }
 .philosophy__content__text {
-  width: 27.9375rem;
+  width: 28rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
+}
+
+/* --------------------------------
+* catalog01
+* -------------------------------- */
+.catalog01 {
+  display: grid;
+  grid-template-areas: "title   title" "img01   img02" "img01   img02";
+  gap: 5.5rem 8.5rem;
+}
+.catalog01__title {
+  grid-area: title;
+  justify-self: flex-start;
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+}
+.catalog01__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.catalog01__content:first-child {
+  grid-area: img01;
+  justify-self: flex-end;
+}
+.catalog01__content:last-child {
+  grid-area: img02;
+  justify-self: flex-start;
+}
+.catalog01__content__img {
+  width: 100%;
+  max-width: 24.5rem;
+  aspect-ratio: 7/10;
+}
+.catalog01__content__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.css.map */
