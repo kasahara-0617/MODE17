@@ -116,9 +116,75 @@
   grid-template-areas:
     "title   title   title"
     "imgLeft content imgRight";
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: remCalc(176) remCalc(0);
+  padding: remCalc(72) 0;
   color: $black;
   background-color: $white;
 
   &__title {
+    grid-area: title;
+    justify-self: flex-start;
+    @include title;
+  }
+
+  &__img {
+    position: relative;
+
+    img {
+      position: absolute;
+      width: 100%;
+    }
+
+    &.imgLeft {
+      grid-area: imgLeft;
+
+      img {
+        left: -20%;
+      }
+    }
+
+    &.imgRight {
+      grid-area: imgRight;
+    }
+  }
+
+  &__content {
+    grid-area: content;
+    text-align: center;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: $jp;
+      font-size: remCalc(14);
+      font-weight: 400;
+      line-height: 2.2;
+
+      &__big {
+        display: flex;
+        flex-direction: column;
+
+        &__jp {
+          font-size: remCalc(32);
+          font-weight: 700;
+          line-height: 1.6;
+        }
+
+        &__en {
+          font-size: remCalc(11);
+          text-align-last: justify;
+        }
+      }
+    }
+
+    &__deco {
+      font-family: $en;
+      font-size: remCalc(11);
+      font-weight: 400;
+      line-height: 200%;
+      opacity: 0.5;
+    }
   }
 }

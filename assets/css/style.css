@@ -37,13 +37,13 @@ body::-webkit-scrollbar {
 }
 
 ::-moz-selection {
-  color: #333;
-  background: #fff;
+  color: #fff;
+  background: #d7a600;
 }
 
 ::selection {
-  color: #333;
-  background: #fff;
+  color: #fff;
+  background: #d7a600;
 }
 
 img,
@@ -191,6 +191,66 @@ img {
 .sdg {
   display: grid;
   grid-template-areas: "title   title   title" "imgLeft content imgRight";
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 11rem 0rem;
+  padding: 4.5rem 0;
   color: #333;
   background-color: #fff;
+}
+.sdg__title {
+  grid-area: title;
+  justify-self: flex-start;
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+}
+.sdg__img {
+  position: relative;
+}
+.sdg__img img {
+  position: absolute;
+  width: 100%;
+}
+.sdg__img.imgLeft {
+  grid-area: imgLeft;
+}
+.sdg__img.imgLeft img {
+  left: -20%;
+}
+.sdg__img.imgRight {
+  grid-area: imgRight;
+}
+.sdg__content {
+  grid-area: content;
+  text-align: center;
+}
+.sdg__content__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 2.2;
+}
+.sdg__content__text__big {
+  display: flex;
+  flex-direction: column;
+}
+.sdg__content__text__big__jp {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.sdg__content__text__big__en {
+  font-size: 0.6875rem;
+  -moz-text-align-last: justify;
+       text-align-last: justify;
+}
+.sdg__content__deco {
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 200%;
+  opacity: 0.5;
 }/*# sourceMappingURL=style.css.map */

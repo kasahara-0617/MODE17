@@ -44,3 +44,4 @@ anchorElements.forEach((element) => {
     alert("リンク先がありません");
   });
 });
+
