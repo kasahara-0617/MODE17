@@ -45,3 +45,23 @@ anchorElements.forEach((element) => {
   });
 });
 
+/* --------------------------------
+ *  Circle Images Fit Size & Rotate
+ * -------------------------------- */
+const circleOuter = document.querySelector(".js-circle");
+const circleImages = document.querySelectorAll(".js-circleImg");
+
+const firstCircleImage = circleImages[0];
+
+const circleHeight = firstCircleImage.clientHeight;
+
+circleOuter.style.height = circleHeight * 1.3 + "px";
+
+window.addEventListener("scroll", function () {
+  var angle = window.scrollY * 0.2;
+
+  circleImages.forEach(function (logo) {
+    logo.style.transform = "rotate(" + angle + "deg)";
+  });
+});
+

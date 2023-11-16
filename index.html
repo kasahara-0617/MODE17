@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head prefix="og: http://ogp.me/ns# website: http://ogp.me/ns/website#">
     <meta charset="utf-8" />
@@ -48,7 +48,7 @@
       <!-- main -->
       <main class="main">
         <section class="hero">
-          <h1>
+          <h1 class="hero__logo">
             <img
               src="assets/images/logo_white.svg"
               alt="MODE17"
@@ -56,10 +56,31 @@
               height="439"
             />
           </h1>
+
+          <div class="hero__video">
+            <video poster="assets/images/poster.jpg" muted autoplay loop>
+              <source
+                src="https://www.nhk.or.jp/das/movie/D0002080/D0002080031_00000_V_000.mp4"
+                type="video/mp4"
+              />
+              <p>動画を再生できる環境ではありません。</p>
+            </video>
+          </div>
         </section>
 
         <section class="philosophy">
+          <div class="philosophy__scroll"></div>
+
           <h2 class="philosophy__title">（&ensp;BRAND PHILOSOPHY&ensp;）</h2>
+
+          <div class="philosophy__img">
+            <img
+              src="assets/images/home-1.webp"
+              alt=""
+              width="440"
+              height="536"
+            />
+          </div>
 
           <div class="philosophy__content">
             <p class="philosophy__content__copy">
@@ -67,6 +88,12 @@
               アイテムを低価格で提供する<br />
               モード系ファッションレンタルブランド
             </p>
+
+            <p class="philosophy__content__en">
+              A fashion rental brand that offers items<br />
+              that are hard to come by at low prices.
+            </p>
+
             <p class="philosophy__content__text">
               「買ったけど結局着なかった」「1回着たら満足してしまった」そんな経験ありませんか？
               せっかく高いお金を支払って手に入れた服を腐らせてしまう。
@@ -114,12 +141,24 @@
         <section class="sdg">
           <h2 class="sdg__title">（&ensp;What's SDGs？&ensp;）</h2>
 
-          <div class="sdg__img imgLeft">
-            <img src="assets/images/SDGs.svg" alt="" width="580" height="580" />
+          <div class="sdg__img circleLeft js-circle">
+            <img
+              class="js-circleImg"
+              src="assets/images/SDGs.svg"
+              alt=""
+              width="580"
+              height="580"
+            />
           </div>
 
-          <div class="sdg__img imgRight">
-            <img src="assets/images/SDGs.svg" alt="" width="580" height="580" />
+          <div class="sdg__img circleRight js-circle">
+            <img
+              class="js-circleImg"
+              src="assets/images/SDGs.svg"
+              alt=""
+              width="580"
+              height="580"
+            />
           </div>
 
           <div class="sdg__content">
@@ -355,7 +394,6 @@
     </div>
 
     <!-- script -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" defer></script>
     <script src="assets/js/script.js" type="module"></script>
     <!-- /script -->
   </body>
