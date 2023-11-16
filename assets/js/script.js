@@ -1,22 +1,22 @@
 /* --------------------------------
  *  Vue Application
  * -------------------------------- */
-import {
-  createApp,
-  defineComponent,
-} from "https://unpkg.com/vue@3.2.4/dist/vue.esm-browser.prod.js";
+// import {
+//   createApp,
+//   defineComponent,
+// } from "https://unpkg.com/vue@3.2.4/dist/vue.esm-browser.prod.js";
 
-const Footer = defineComponent({
-  template: `
-        <footer id="footer">
-          <p class="copyright"><small>&copy;copyright</small></p>
-        </footer>
-      `,
-});
+// const Footer = defineComponent({
+//   template: `
+//         <footer id="footer">
+//           <p class="copyright"><small>&copy;copyright</small></p>
+//         </footer>
+//       `,
+// });
 
-const app = createApp({});
-app.component("the-footer", Footer);
-app.mount("#app");
+// const app = createApp({});
+// app.component("the-footer", Footer);
+// app.mount("#app");
 
 /* --------------------------------
  *  Decrease Display Magnification
@@ -58,10 +58,9 @@ const circleHeight = firstCircleImage.clientHeight;
 circleOuter.style.height = circleHeight * 1.3 + "px";
 
 window.addEventListener("scroll", function () {
-  var angle = window.scrollY * 0.2;
+  let angle = window.scrollY * 0.2;
 
   circleImages.forEach(function (logo) {
     logo.style.transform = "rotate(" + angle + "deg)";
   });
 });
-

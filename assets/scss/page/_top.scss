@@ -7,7 +7,7 @@
 * -------------------------------- */
 .hero {
   position: sticky;
-	position: relative;
+  // position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,6 +303,86 @@
       font-weight: 400;
       line-height: 200%;
       opacity: 0.5;
+    }
+  }
+}
+
+/* --------------------------------
+* mission
+* -------------------------------- */
+.mission {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: remCalc(72) remCalc(80) remCalc(240) remCalc(160);
+  color: $black;
+  background-color: $white;
+
+  &__content {
+    &__title {
+      @include title;
+    }
+
+    &__text {
+      margin-top: remCalc(32);
+      width: remCalc(416);
+      @include text;
+    }
+  }
+
+  &__sdg {
+    display: grid;
+    grid-template-areas:
+      "nine   nine"
+      "twelve eleven";
+    grid-template-rows: 1fr 1.5fr;
+    gap: 0 remCalc(220);
+
+    &__content {
+      display: grid;
+      grid-template-areas:
+        "number title"
+        "img    img";
+      gap: remCalc(20);
+      align-items: flex-end;
+      justify-content: flex-start;
+
+      &__number {
+        grid-area: number;
+        font-family: $en;
+        font-size: remCalc(96);
+        font-weight: 200;
+        line-height: 1;
+      }
+
+      &__title {
+        grid-area: title;
+        margin-bottom: remCalc(5);
+        font-family: $jp;
+        font-size: remCalc(14);
+        font-weight: 500;
+        line-height: 1.8;
+      }
+
+      &__img {
+        grid-area: img;
+        justify-self: center;
+      }
+
+      &.nine {
+        grid-area: nine;
+        justify-self: center;
+      }
+
+      &.eleven {
+        grid-area: eleven;
+        align-self: center;
+      }
+
+      &.twelve {
+        grid-area: twelve;
+        align-self: flex-end;
+      }
     }
   }
 }

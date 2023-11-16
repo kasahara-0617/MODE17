@@ -89,7 +89,6 @@ img {
 * -------------------------------- */
 .hero {
   position: sticky;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -361,4 +360,76 @@ img {
   font-weight: 400;
   line-height: 200%;
   opacity: 0.5;
+}
+
+/* --------------------------------
+* mission
+* -------------------------------- */
+.mission {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 4.5rem 5rem 15rem 10rem;
+  color: #333;
+  background-color: #fff;
+}
+.mission__content__title {
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.mission__content__text {
+  margin-top: 2rem;
+  width: 26rem;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 2.2;
+  white-space: normal;
+  text-align: justify;
+}
+.mission__sdg {
+  display: grid;
+  grid-template-areas: "nine   nine" "twelve eleven";
+  grid-template-rows: 1fr 1.5fr;
+  gap: 0 13.75rem;
+}
+.mission__sdg__content {
+  display: grid;
+  grid-template-areas: "number title" "img    img";
+  gap: 1.25rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+.mission__sdg__content__number {
+  grid-area: number;
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 6rem;
+  font-weight: 200;
+  line-height: 1;
+}
+.mission__sdg__content__title {
+  grid-area: title;
+  margin-bottom: 0.3125rem;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+.mission__sdg__content__img {
+  grid-area: img;
+  justify-self: center;
+}
+.mission__sdg__content.nine {
+  grid-area: nine;
+  justify-self: center;
+}
+.mission__sdg__content.eleven {
+  grid-area: eleven;
+  align-self: center;
+}
+.mission__sdg__content.twelve {
+  grid-area: twelve;
+  align-self: flex-end;
 }/*# sourceMappingURL=style.css.map */
