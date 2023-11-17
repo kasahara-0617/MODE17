@@ -46,7 +46,7 @@ anchorElements.forEach((element) => {
 });
 
 /* --------------------------------
- *  Circle Images Fit Size & Rotate
+ *  Circle Fit Size & Rotate
  * -------------------------------- */
 const circleOuter = document.querySelector(".js-circle");
 const circleImages = document.querySelectorAll(".js-circleImg");
@@ -60,7 +60,54 @@ circleOuter.style.height = circleHeight * 1.3 + "px";
 window.addEventListener("scroll", function () {
   let angle = window.scrollY * 0.2;
 
-  circleImages.forEach(function (logo) {
-    logo.style.transform = "rotate(" + angle + "deg)";
+  circleImages.forEach(function (logo, index) {
+    if (index === 1) {
+      logo.style.transform = "rotate(" + -angle + "deg)";
+    } else {
+      logo.style.transform = "rotate(" + angle + "deg)";
+    }
   });
+});
+
+/* --------------------------------
+ *  Unify Width
+ * -------------------------------- */
+function unifyWidth(elements) {
+  let maxWidth = 0;
+  elements.forEach(function (element) {
+    const width = element.offsetWidth;
+    if (width > maxWidth) {
+      maxWidth = width;
+    }
+  });
+
+  elements.forEach(function (element) {
+    element.style.width = `${maxWidth}px`;
+  });
+}
+
+window.addEventListener("load", function () {
+  const unifyElements = document.querySelectorAll(".js-text");
+  unifyWidth(unifyElements);
+});
+
+/* --------------------------------
+ *  Side Scroll
+ * -------------------------------- */
+const listWrapper = document.querySelector(".js-wrapper");
+const listElements = document.querySelector(".js-list");
+
+gsap.to(listElements, {
+  x: () => -(listElements.clientWidth - listWrapper.clientWidth),
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".process",
+    start: "top top",
+    end: () => `+=${listElements.clientWidth - listWrapper.clientWidth}`,
+    scrub: true,
+    pin: true,
+    anticipatePin: 1,
+    invalidateOnRefresh: true,
+    markers: true,
+  },
 });

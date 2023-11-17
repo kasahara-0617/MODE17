@@ -432,4 +432,59 @@ img {
 .mission__sdg__content.twelve {
   grid-area: twelve;
   align-self: flex-end;
+}
+
+/* --------------------------------
+* process
+* -------------------------------- */
+.process {
+  width: 100%;
+  height: 100vh;
+  padding: 12.5rem 17.5rem 12.5rem 5rem;
+  background-color: #333;
+}
+.process__container {
+  width: 100%;
+}
+.process__container__title {
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.process__container__wrapper {
+  position: relative;
+  margin-top: 7.5rem;
+  width: 100%;
+}
+.process__container__wrapper__list {
+  position: absolute;
+  display: flex;
+  gap: 0 11.25rem;
+  top: 0;
+  left: 0;
+  padding-left: 12.5rem;
+}
+.process__container__wrapper__list__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.25rem 0;
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.7;
+  text-align: center;
+}
+.process__container__wrapper__list__item__img {
+  width: 100%;
+  max-width: 12rem;
+  aspect-ratio: 1/1;
+}
+.process__container__wrapper__list__item__img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=style.css.map */
