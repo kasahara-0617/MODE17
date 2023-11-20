@@ -568,21 +568,46 @@
         width: 100%;
         height: 1px;
         background-color: $white;
-        transition: all 0.3s $ease1;
         transform-origin: left top;
-        scale: 0 1;
+        scale: 1 1;
+        transition: scale 0.3s $ease1;
       }
 
       span {
-        rotate: 45deg;
+        margin-left: remCalc(32);
       }
 
       &:hover {
         &::before {
           transform-origin: right top;
-          scale: 1 1;
+          scale: 0 1;
         }
       }
     }
+  }
+}
+
+/* --------------------------------
+* footer
+* -------------------------------- */
+.footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  padding: remCalc(180) 0 remCalc(32);
+  color: $black;
+  background-color: $white;
+
+  &__link {
+    font-family: $en;
+    font-size: remCalc(112);
+    font-weight: 300;
+    text-align: center;
+  }
+
+  &__copyright {
+    font-family: $jp;
+    font-size: remCalc(12);
+    font-weight: 300;
   }
 }

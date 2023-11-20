@@ -602,14 +602,37 @@ img {
   width: 100%;
   height: 1px;
   background-color: #fff;
-  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
   transform-origin: left top;
-  scale: 0 1;
+  scale: 1 1;
+  transition: scale 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .access__content__btn span {
-  rotate: 45deg;
+  margin-left: 2rem;
 }
 .access__content__btn:hover::before {
   transform-origin: right top;
-  scale: 1 1;
+  scale: 0 1;
+}
+
+/* --------------------------------
+* footer
+* -------------------------------- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 11.25rem 0 2rem;
+  color: #333;
+  background-color: #fff;
+}
+.footer__link {
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 7rem;
+  font-weight: 300;
+  text-align: center;
+}
+.footer__copyright {
+  font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
 }/*# sourceMappingURL=style.css.map */
