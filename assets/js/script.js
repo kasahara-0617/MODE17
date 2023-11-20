@@ -87,8 +87,11 @@ function unifyWidth(elements) {
 }
 
 window.addEventListener("load", function () {
-  const unifyElements = document.querySelectorAll(".js-text");
-  unifyWidth(unifyElements);
+  const textElements = document.querySelectorAll(".js-text");
+  unifyWidth(textElements);
+
+  const teamElements = document.querySelectorAll(".js-team");
+  unifyWidth(teamElements);
 });
 
 /* --------------------------------
