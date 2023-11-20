@@ -550,6 +550,7 @@ img {
 .catalog02__content__name {
   height: -moz-fit-content;
   height: fit-content;
+  padding-bottom: 0.1875rem;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
@@ -584,4 +585,31 @@ img {
 }
 .access__content dl dt {
   font-weight: 300;
+}
+.access__content__btn {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+}
+.access__content__btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  transform-origin: left top;
+  scale: 0 1;
+}
+.access__content__btn span {
+  rotate: 45deg;
+}
+.access__content__btn:hover::before {
+  transform-origin: right top;
+  scale: 1 1;
 }/*# sourceMappingURL=style.css.map */

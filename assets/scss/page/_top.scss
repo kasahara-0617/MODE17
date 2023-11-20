@@ -515,6 +515,7 @@
 
     &__name {
       height: fit-content;
+      padding-bottom: remCalc(3);
       font-family: $en;
       font-size: remCalc(13);
       font-weight: 300;
@@ -553,6 +554,35 @@
     }
 
     &__btn {
+      position: relative;
+      width: fit-content;
+      font-family: $en;
+      font-size: remCalc(32);
+      font-weight: 300;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $white;
+        transition: all 0.3s $ease1;
+        transform-origin: left top;
+        scale: 0 1;
+      }
+
+      span {
+        rotate: 45deg;
+      }
+
+      &:hover {
+        &::before {
+          transform-origin: right top;
+          scale: 1 1;
+        }
+      }
     }
   }
 }
