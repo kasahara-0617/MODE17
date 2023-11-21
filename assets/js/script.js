@@ -46,30 +46,6 @@ anchorElements.forEach((element) => {
 });
 
 /* --------------------------------
- *  Circle Fit Size & Rotate
- * -------------------------------- */
-const circleOuter = document.querySelector(".js-circle");
-const circleImages = document.querySelectorAll(".js-circleImg");
-
-const firstCircleImage = circleImages[0];
-
-const circleHeight = firstCircleImage.clientHeight;
-
-circleOuter.style.height = circleHeight * 1.3 + "px";
-
-window.addEventListener("scroll", function () {
-  let angle = window.scrollY * 0.2;
-
-  circleImages.forEach(function (logo, index) {
-    if (index === 1) {
-      logo.style.transform = "rotate(" + -angle + "deg)";
-    } else {
-      logo.style.transform = "rotate(" + angle + "deg)";
-    }
-  });
-});
-
-/* --------------------------------
  *  Unify Width
  * -------------------------------- */
 function unifyWidth(elements) {
@@ -92,6 +68,79 @@ window.addEventListener("load", function () {
 
   const teamElements = document.querySelectorAll(".js-team");
   unifyWidth(teamElements);
+});
+
+/* --------------------------------
+ *  Parallax
+ * -------------------------------- */
+const targets = document.querySelectorAll(".js-parallax");
+
+targets.forEach((target) => {
+  gsap.fromTo(
+    target.querySelector("img"),
+    {
+      yPercent: 10,
+    },
+    {
+      yPercent: -10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: target,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+        markers: true,
+      },
+    }
+  );
+});
+
+const targets2 = document.querySelectorAll(".js-parallax2");
+
+targets2.forEach((target) => {
+  gsap.fromTo(
+    target.querySelector("img"),
+    {
+      yPercent: 10,
+    },
+    {
+      yPercent: -10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: target,
+        start: "top+=600 bottom",
+        end: "bottom+=600 top",
+        scrub: true,
+        invalidateOnRefresh: true,
+        markers: true,
+      },
+    }
+  );
+});
+
+/* --------------------------------
+ *  Circle Fit Size & Rotate
+ * -------------------------------- */
+const circleOuter = document.querySelector(".js-circle");
+const circleImages = document.querySelectorAll(".js-circleImg");
+
+const firstCircleImage = circleImages[0];
+
+const circleHeight = firstCircleImage.clientHeight;
+
+circleOuter.style.height = circleHeight * 1.3 + "px";
+
+window.addEventListener("scroll", function () {
+  let angle = window.scrollY * 0.2;
+
+  circleImages.forEach(function (logo, index) {
+    if (index === 1) {
+      logo.style.transform = "rotate(" + -angle + "deg)";
+    } else {
+      logo.style.transform = "rotate(" + angle + "deg)";
+    }
+  });
 });
 
 /* --------------------------------
