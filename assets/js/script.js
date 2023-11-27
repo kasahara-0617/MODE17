@@ -79,10 +79,10 @@ targets.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
     {
-      yPercent: 10,
+      yPercent: 12,
     },
     {
-      yPercent: -10,
+      yPercent: -12,
       ease: "none",
       scrollTrigger: {
         trigger: target,
@@ -102,10 +102,10 @@ targets2.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
     {
-      yPercent: 10,
+      yPercent: 12,
     },
     {
-      yPercent: -10,
+      yPercent: -12,
       ease: "none",
       scrollTrigger: {
         trigger: target,

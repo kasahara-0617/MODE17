@@ -26,13 +26,15 @@
 
   &__logo {
     position: relative;
+    width: responsiveClamp(600, 936, 768, 1024);
+    aspect-ratio: 117/55;
     z-index: 3;
   }
 
   &__video {
     position: absolute;
     inset: 0;
-    aspect-ratio: 16/9;
+    min-height: 100vh;
     z-index: 1;
 
     video {
@@ -51,11 +53,19 @@
   grid-template-areas:
     "title title"
     "img   content";
-  grid-template-columns: auto 40%;
-  gap: remCalc(72) remCalc(160);
+  gap: responsiveClamp(64, 72, 1024, 1280) responsiveClamp(64, 160, 1024, 1280);
   align-items: flex-end;
-  padding: remCalc(64) remCalc(80) remCalc(224) 0;
+  justify-content: center;
+  padding: remCalc(64) 0 remCalc(224);
   background-color: rgba($color: $black, $alpha: 1);
+
+  @include mq(lg) {
+    grid-template-areas:
+      "title   title"
+      "content content";
+    grid-template-columns: 1fr;
+    background-color: rgba($color: $black, $alpha: 0.9);
+  }
 
   &__scroll {
     position: absolute;
@@ -113,13 +123,17 @@
     grid-area: title;
     justify-self: flex-end;
     @include title;
+
+    @include mq(lg) {
+      margin-right: remCalc(40);
+    }
   }
 
   &__img {
     grid-area: img;
     justify-self: flex-end;
     width: 100%;
-    max-width: remCalc(440);
+    max-width: responsiveClamp(400, 440, 1024, 1280);
     aspect-ratio: 55/67;
 
     img {
@@ -128,12 +142,20 @@
       object-fit: cover;
       border-radius: remCalc(220) remCalc(220) 0 0;
     }
+
+    @include mq(lg) {
+      display: none;
+    }
   }
 
   &__content {
     grid-area: content;
     display: flex;
     flex-direction: column;
+
+    @include mq(lg) {
+      justify-self: center;
+    }
 
     &__copy {
       align-self: flex-start;
@@ -155,7 +177,7 @@
     }
 
     &__text {
-      width: remCalc(448);
+      width: responsiveClamp(400, 440, 1024, 1280);
       @include text;
     }
   }
@@ -169,7 +191,7 @@
   grid-template-areas:
     "title     title"
     "imgLeft   imgRight";
-  gap: remCalc(88) remCalc(176);
+  gap: remCalc(88) responsiveClamp(80, 176, 1024, 1280);
   padding: remCalc(80) 0 remCalc(120) remCalc(80);
   color: $black;
   background-color: $white;
@@ -201,7 +223,7 @@
       width: 100%;
       max-width: remCalc(392);
       aspect-ratio: 7/10;
-			// overflow: hidden;
+      // overflow: hidden;
 
       img {
         width: 100%;
@@ -222,6 +244,7 @@
 * sdg
 * -------------------------------- */
 .sdg {
+  position: relative;
   display: grid;
   grid-template-areas:
     "title   title   title"
@@ -233,6 +256,14 @@
   background-color: $white;
   overflow: hidden;
 
+  @include mq(lg) {
+    grid-template-areas:
+      "title"
+      "content";
+
+			grid-template-columns: 1fr;
+  }
+
   &__title {
     grid-area: title;
     justify-self: flex-start;
@@ -243,13 +274,32 @@
   &__img {
     position: relative;
 
+    @include mq(lg) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
     img {
       position: absolute;
       scale: 1.3;
+
+      @include mq(xl) {
+        scale: 1.6;
+      }
+
+      @include mq(lg) {
+        scale: 1;
+      }
     }
 
     &.circleLeft {
       grid-area: imgLeft;
+
+      @include mq(lg) {
+        display: none;
+      }
 
       img {
         left: -50%;
@@ -259,6 +309,10 @@
     &.circleRight {
       grid-area: imgRight;
 
+      @include mq(lg) {
+        grid-area: content;
+      }
+
       img {
         right: -50%;
       }
@@ -266,6 +320,7 @@
   }
 
   &__content {
+    position: relative;
     grid-area: content;
     text-align: center;
 
@@ -336,7 +391,7 @@
       "nine   nine"
       "twelve eleven";
     grid-template-rows: 1fr 1.5fr;
-    gap: 0 remCalc(220);
+    gap: 0 responsiveClamp(80, 220, 1024, 1280);
 
     &__content {
       display: grid;
@@ -395,6 +450,7 @@
   height: 100vh;
   padding: remCalc(200) remCalc(280) remCalc(200) remCalc(80);
   background-color: $black;
+  display: none;
 
   &__container {
     width: 100%;
@@ -530,7 +586,8 @@
 .access {
   display: flex;
   justify-content: space-between;
-  padding: remCalc(100) remCalc(130) remCalc(180) remCalc(80);
+  padding: remCalc(100) responsiveClamp(80, 130, 1024, 1280) remCalc(180)
+    remCalc(80);
   background-color: $black;
 
   &__title {
@@ -541,6 +598,14 @@
     display: flex;
     flex-direction: column;
     gap: remCalc(20) 0;
+
+    & .lg {
+      display: none;
+
+      @include mq(lg) {
+        display: block;
+      }
+    }
 
     dl {
       display: flex;
@@ -592,9 +657,9 @@
 * footer
 * -------------------------------- */
 .footer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: remCalc(180) 0 remCalc(32);
   color: $black;
   background-color: $white;
@@ -604,6 +669,7 @@
     font-size: remCalc(112);
     font-weight: 300;
     text-align: center;
+    display: none;
   }
 
   &__copyright {
