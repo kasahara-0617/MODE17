@@ -435,9 +435,14 @@ img {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 5rem 5rem 15rem 10rem;
+  padding: 5rem 5rem 15rem clamp(1.25rem, -3.806rem + 21.57vw, 10rem);
   color: #333;
   background-color: #fff;
+}
+@media (width < 1024px) {
+  .mission {
+    flex-direction: column;
+  }
 }
 .mission__content__title {
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
@@ -629,22 +634,25 @@ img {
 .access {
   display: flex;
   justify-content: space-between;
-  padding: 6.25rem clamp(2.5rem, 0.169rem + 9.94vw, 8.125rem) 11.25rem clamp(2.5rem, 0.169rem + 9.94vw, 8.125rem);
+  padding: 6.25rem clamp(5rem, -7.5rem + 19.53vw, 8.125rem) 11.25rem clamp(5rem, -7.5rem + 19.53vw, 8.125rem);
   background-color: #333;
 }
 @media (width < 1024px) {
   .access {
     flex-direction: column;
     gap: 3.5rem 0;
+    padding: 6.25rem 0 11.25rem clamp(5rem, -7.5rem + 19.53vw, 8.125rem);
   }
 }
 .access__title {
+  grid-area: title;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
   text-transform: uppercase;
 }
 .access__content {
+  grid-area: content;
   display: flex;
   flex-direction: column;
   gap: 1.25rem 0;

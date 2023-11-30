@@ -372,9 +372,14 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: remCalc(80) remCalc(80) remCalc(240) remCalc(160);
+  padding: remCalc(80) remCalc(80) remCalc(240)
+    responsiveClamp(20, 160, 375, 1024);
   color: $black;
   background-color: $white;
+
+  @include mq(lg) {
+    flex-direction: column;
+  }
 
   &__content {
     &__title {
@@ -589,20 +594,23 @@
 .access {
   display: flex;
   justify-content: space-between;
-  padding: remCalc(100) responsiveClamp(40, 130, 375, 1280) remCalc(180)
-    responsiveClamp(40, 130, 375, 1280);
+  padding: remCalc(100) responsiveClamp(80, 130, 1024, 1280) remCalc(180)
+    responsiveClamp(80, 130, 1024, 1280);
   background-color: $black;
 
   @include mq(lg) {
     flex-direction: column;
     gap: remCalc(56) 0;
+    padding: remCalc(100) 0 remCalc(180) responsiveClamp(80, 130, 1024, 1280);
   }
 
   &__title {
+    grid-area: title;
     @include title;
   }
 
   &__content {
+    grid-area: content;
     display: flex;
     flex-direction: column;
     gap: remCalc(20) 0;
@@ -620,9 +628,9 @@
           flex-direction: column;
           gap: remCalc(8) 0;
 
-					dt {
-						width: fit-content;
-					}
+          dt {
+            width: fit-content;
+          }
         }
       }
 
