@@ -29,6 +29,34 @@
     width: responsiveClamp(600, 936, 768, 1024);
     aspect-ratio: 117/55;
     z-index: 3;
+
+    svg {
+      .st0 {
+        fill: #fff;
+      }
+
+      .st1 {
+        fill: none;
+        stroke: #f08e8d;
+        stroke-width: 3.5;
+        stroke-miterlimit: 10;
+      }
+
+      #base {
+        opacity: 0;
+        animation: fadeIn 2s 3s forwards;
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
 
   &__video {
@@ -261,7 +289,7 @@
       "title"
       "content";
 
-			grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   &__title {

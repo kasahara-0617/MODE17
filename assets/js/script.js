@@ -71,6 +71,15 @@ window.addEventListener("load", function () {
 });
 
 /* --------------------------------
+ *  Circle Fit Size & Rotate
+ * -------------------------------- */
+new Vivus("js-logo", {
+  type: "scenario",
+  duration: 50,
+  start: "autostart",
+});
+
+/* --------------------------------
  *  Parallax
  * -------------------------------- */
 const targets = document.querySelectorAll(".js-parallax");

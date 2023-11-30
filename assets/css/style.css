@@ -115,6 +115,27 @@ img {
   aspect-ratio: 117/55;
   z-index: 3;
 }
+.hero__logo svg .st0 {
+  fill: #fff;
+}
+.hero__logo svg .st1 {
+  fill: none;
+  stroke: #f08e8d;
+  stroke-width: 3.5;
+  stroke-miterlimit: 10;
+}
+.hero__logo svg #base {
+  opacity: 0;
+  animation: fadeIn 2s 3s forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .hero__video {
   position: absolute;
   inset: 0;
