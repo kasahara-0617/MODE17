@@ -99,7 +99,7 @@ targets.forEach((target) => {
         end: "bottom top",
         scrub: true,
         invalidateOnRefresh: true,
-        markers: true,
+        // markers: true,
       },
     }
   );
@@ -122,7 +122,7 @@ targets2.forEach((target) => {
         end: "bottom+=600 top",
         scrub: true,
         invalidateOnRefresh: true,
-        markers: true,
+        // markers: true,
       },
     }
   );
@@ -169,6 +169,6 @@ gsap.to(listElements, {
     pin: true,
     anticipatePin: 1,
     invalidateOnRefresh: true,
-    markers: true,
+    // markers: true,
   },
 });

@@ -251,7 +251,6 @@
       width: 100%;
       max-width: remCalc(392);
       aspect-ratio: 7/10;
-      // overflow: hidden;
 
       img {
         width: 100%;
@@ -288,7 +287,6 @@
     grid-template-areas:
       "title"
       "content";
-
     grid-template-columns: 1fr;
   }
 
@@ -319,6 +317,11 @@
 
       @include mq(lg) {
         scale: 1;
+        opacity: 0.5;
+      }
+
+      @include mq(md) {
+        opacity: 0.2;
       }
     }
 
@@ -357,7 +360,7 @@
       flex-direction: column;
       align-items: center;
       font-family: $jp;
-      font-size: remCalc(14);
+      font-size: responsiveClamp(11, 14, 375, 1024);
       font-weight: 400;
       line-height: 2.2;
 
@@ -400,6 +403,11 @@
   padding: remCalc(80) remCalc(80) remCalc(240) remCalc(160);
   color: $black;
   background-color: $white;
+
+  @include mq(lg) {
+    flex-direction: column;
+    padding-left: remCalc(60);
+  }
 
   &__content {
     &__title {
@@ -615,32 +623,44 @@
   display: flex;
   justify-content: space-between;
   padding: remCalc(100) responsiveClamp(80, 130, 1024, 1280) remCalc(180)
-    remCalc(80);
+    responsiveClamp(80, 130, 1024, 1280);
   background-color: $black;
 
+  @include mq(lg) {
+    flex-direction: column;
+    gap: remCalc(56) 0;
+    padding: remCalc(100) 0 remCalc(180) responsiveClamp(80, 130, 1024, 1280);
+  }
+
   &__title {
+    grid-area: title;
     @include title;
   }
 
   &__content {
+    grid-area: content;
     display: flex;
     flex-direction: column;
     gap: remCalc(20) 0;
-
-    & .lg {
-      display: none;
-
-      @include mq(lg) {
-        display: block;
-      }
-    }
 
     dl {
       display: flex;
       gap: 0 remCalc(56);
       font-family: $jp;
-      font-size: remCalc(14);
+      font-size: responsiveClamp(12, 14, 375, 768);
       font-weight: 300;
+
+      @include mq(sm) {
+        &.sm {
+          display: flex;
+          flex-direction: column;
+          gap: remCalc(8) 0;
+
+          dt {
+            width: fit-content;
+          }
+        }
+      }
 
       dt {
         font-weight: 300;
@@ -649,6 +669,7 @@
 
     &__btn {
       position: relative;
+      display: flex;
       width: fit-content;
       font-family: $en;
       font-size: remCalc(32);
@@ -667,8 +688,9 @@
         transition: scale 0.3s $ease1;
       }
 
-      span {
+      .arrow {
         margin-left: remCalc(32);
+        rotate: 45deg;
       }
 
       &:hover {
