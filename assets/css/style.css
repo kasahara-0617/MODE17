@@ -435,13 +435,14 @@ img {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 5rem 5rem 15rem clamp(1.25rem, -3.806rem + 21.57vw, 10rem);
+  padding: 5rem 5rem 15rem 10rem;
   color: #333;
   background-color: #fff;
 }
 @media (width < 1024px) {
   .mission {
     flex-direction: column;
+    padding-left: 3.75rem;
   }
 }
 .mission__content__title {

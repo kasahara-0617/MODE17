@@ -372,13 +372,13 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: remCalc(80) remCalc(80) remCalc(240)
-    responsiveClamp(20, 160, 375, 1024);
+  padding: remCalc(80) remCalc(80) remCalc(240) remCalc(160);
   color: $black;
   background-color: $white;
 
   @include mq(lg) {
     flex-direction: column;
+    padding-left: remCalc(60);
   }
 
   &__content {
