@@ -107,11 +107,7 @@ img {
 }
 .hero__logo {
   position: relative;
-  width: clamp(
-    37.5rem,
-    -25.5rem + 131.25vw,
-    58.5rem
-  );
+  width: clamp(18.75rem, -4.218rem + 98vw, 58.5rem);
   aspect-ratio: 117/55;
   z-index: 3;
 }
@@ -155,15 +151,7 @@ img {
 .philosophy {
   display: grid;
   grid-template-areas: "title title" "img   content";
-  gap: clamp(
-    4rem,
-    2rem + 3.13vw,
-    4.5rem
-  ) clamp(
-    4rem,
-    -20rem + 37.5vw,
-    10rem
-  );
+  gap: clamp(4rem, 2rem + 3.13vw, 4.5rem) clamp(4rem, -20rem + 37.5vw, 10rem);
   align-items: flex-end;
   justify-content: center;
   padding: 4rem 0 14rem;
@@ -173,7 +161,14 @@ img {
   .philosophy {
     grid-template-areas: "title   title" "content content";
     grid-template-columns: 1fr;
+    gap: 0;
     background-color: rgba(51, 51, 51, 0.9);
+  }
+}
+@media (width < 768px) {
+  .philosophy {
+    grid-template-areas: "title" "content";
+    padding: 4rem 2.5rem 14rem;
   }
 }
 .philosophy__scroll {
@@ -182,6 +177,11 @@ img {
   top: 50vh;
   left: 3rem;
   z-index: 4;
+}
+@media (width < 768px) {
+  .philosophy__scroll {
+    top: 80vh;
+  }
 }
 .philosophy__scroll::before {
   content: "";
@@ -193,6 +193,11 @@ img {
   background-color: #fff;
   opacity: 0.4;
 }
+@media (width < 768px) {
+  .philosophy__scroll::before {
+    height: 40vh;
+  }
+}
 .philosophy__scroll::after {
   content: "";
   position: absolute;
@@ -202,6 +207,11 @@ img {
   height: 75vh;
   background-color: #fff;
   animation: scroll 2s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+}
+@media (width < 768px) {
+  .philosophy__scroll::after {
+    height: 40vh;
+  }
 }
 @keyframes scroll {
   0% {
@@ -234,15 +244,16 @@ img {
     margin-right: 2.5rem;
   }
 }
+@media (width < 768px) {
+  .philosophy__title {
+    margin: 0;
+  }
+}
 .philosophy__img {
   grid-area: img;
   justify-self: flex-end;
   width: 100%;
-  max-width: clamp(
-    25rem,
-    15rem + 15.63vw,
-    27.5rem
-  );
+  max-width: clamp(25rem, 15rem + 15.63vw, 27.5rem);
   aspect-ratio: 55/67;
 }
 .philosophy__img img {
@@ -271,10 +282,18 @@ img {
   align-self: flex-start;
   margin-top: 12rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 1.006rem + 0.51vw, 1.25rem);
   font-weight: 500;
   line-height: 2.2;
   letter-spacing: 0.2em;
+}
+.philosophy__content__copy .sm {
+  display: none;
+}
+@media (width < 640px) {
+  .philosophy__content__copy .sm {
+    display: block;
+  }
 }
 .philosophy__content__en {
   margin: 1rem 0 3.5rem;
@@ -285,17 +304,18 @@ img {
   line-height: 2.2;
 }
 .philosophy__content__text {
-  width: clamp(
-    25rem,
-    15rem + 15.63vw,
-    27.5rem
-  );
+  width: clamp(25rem, 22.5rem + 6.25vw, 27.5rem);
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 300;
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
+}
+@media (width < 640px) {
+  .philosophy__content__text {
+    width: 100%;
+  }
 }
 
 /* --------------------------------
@@ -304,14 +324,16 @@ img {
 .catalog01 {
   display: grid;
   grid-template-areas: "title     title" "imgLeft   imgRight";
-  gap: 5.5rem clamp(
-    5rem,
-    -19rem + 37.5vw,
-    11rem
-  );
+  gap: 5.5rem clamp(5rem, -19rem + 37.5vw, 11rem);
   padding: 5rem 0 7.5rem 5rem;
   color: #333;
   background-color: #fff;
+}
+@media (width < 768px) {
+  .catalog01 {
+    grid-template-areas: "title" "imgLeft" "imgRight";
+    padding: 5rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem) 7.5rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
+  }
 }
 .catalog01__title {
   grid-area: title;
@@ -327,18 +349,23 @@ img {
   align-items: flex-end;
   row-gap: 0.5rem;
 }
-.catalog01__content:first-child {
+.catalog01__content.imgLeft {
   grid-area: imgLeft;
   justify-self: flex-end;
 }
-.catalog01__content:last-child {
+.catalog01__content.imgRight {
   grid-area: imgRight;
   justify-self: flex-start;
   margin-top: 16.25rem;
 }
+@media (width < 768px) {
+  .catalog01__content.imgRight {
+    margin-top: 0;
+  }
+}
 .catalog01__content__img {
   width: 100%;
-  max-width: 24.5rem;
+  max-width: clamp(17.5rem, 16.931rem + 1.18vw, 24.5rem);
   aspect-ratio: 7/10;
 }
 .catalog01__content__img img {
@@ -349,7 +376,7 @@ img {
 }
 .catalog01__content__name {
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 0.8125rem;
+  font-size: clamp(0.75rem, 0.69rem + 0.25vw, 0.813rem);
   font-weight: 300;
 }
 
@@ -361,7 +388,7 @@ img {
   display: grid;
   grid-template-areas: "title   title   title" "imgLeft content imgRight";
   grid-template-columns: 1fr auto 1fr;
-  gap: 11rem 0;
+  gap: clamp(7.5rem, 5.478rem + 8.63vw, 11rem) 0;
   padding: 5rem 0;
   color: #333;
   background-color: #fff;
@@ -376,7 +403,7 @@ img {
 .sdg__title {
   grid-area: title;
   justify-self: flex-start;
-  padding-left: 5rem;
+  margin-left: clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
@@ -410,6 +437,7 @@ img {
 }
 @media (width < 768px) {
   .sdg__img img {
+    scale: 1;
     opacity: 0.2;
   }
 }
@@ -418,11 +446,17 @@ img {
 }
 @media (width < 1024px) {
   .sdg__img.circleLeft {
-    display: none;
+    grid-area: content;
   }
 }
 .sdg__img.circleLeft img {
   left: -50%;
+}
+@media (width < 640px) {
+  .sdg__img.circleLeft img {
+    left: 50%;
+    translate: -50%;
+  }
 }
 .sdg__img.circleRight {
   grid-area: imgRight;
@@ -430,6 +464,11 @@ img {
 @media (width < 1024px) {
   .sdg__img.circleRight {
     grid-area: content;
+  }
+}
+@media (width < 640px) {
+  .sdg__img.circleRight {
+    display: none;
   }
 }
 .sdg__img.circleRight img {
@@ -445,13 +484,17 @@ img {
   flex-direction: column;
   align-items: center;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: clamp(
-    0.688rem,
-    0.579rem + 0.46vw,
-    0.875rem
-  );
+  font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 400;
   line-height: 2.2;
+}
+.sdg__content__text .sm {
+  display: none;
+}
+@media (width < 640px) {
+  .sdg__content__text .sm {
+    display: block;
+  }
 }
 .sdg__content__text__big {
   display: flex;
@@ -484,14 +527,20 @@ img {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 5rem 5rem 15rem 10rem;
+  padding: 5rem 5rem 15rem clamp(5rem, -15rem + 31.25vw, 10rem);
   color: #333;
   background-color: #fff;
 }
 @media (width < 1024px) {
   .mission {
     flex-direction: column;
-    padding-left: 3.75rem;
+    gap: 3rem 0;
+    padding: 5rem 5rem 15rem 3.75rem;
+  }
+}
+@media (width < 640px) {
+  .mission {
+    padding: 5rem 2.5rem 15rem;
   }
 }
 .mission__content__title {
@@ -504,21 +553,28 @@ img {
   margin-top: 2rem;
   width: 26rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 300;
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
 }
+@media (width < 640px) {
+  .mission__content__text {
+    width: 100%;
+  }
+}
 .mission__sdg {
   display: grid;
   grid-template-areas: "nine   nine" "twelve eleven";
   grid-template-rows: 1fr 1.5fr;
-  gap: 0 clamp(
-    5rem,
-    -30rem + 54.69vw,
-    13.75rem
-  );
+  -moz-column-gap: clamp(2rem, -2.869rem + 20.77vw, 13.75rem);
+       column-gap: clamp(2rem, -2.869rem + 20.77vw, 13.75rem);
+}
+@media (width < 1024px) {
+  .mission__sdg {
+    justify-content: center;
+  }
 }
 .mission__sdg__content {
   display: grid;
@@ -530,7 +586,7 @@ img {
 .mission__sdg__content__number {
   grid-area: number;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 6rem;
+  font-size: clamp(3.5rem, 1.115rem + 10.18vw, 6rem);
   font-weight: 200;
   line-height: 1;
 }
@@ -538,13 +594,14 @@ img {
   grid-area: title;
   margin-bottom: 0.3125rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 500;
   line-height: 1.8;
 }
 .mission__sdg__content__img {
   grid-area: img;
   justify-self: center;
+  width: clamp(7.5rem, 5.115rem + 10.18vw, 10rem);
 }
 .mission__sdg__content.nine {
   grid-area: nine;
@@ -565,9 +622,8 @@ img {
 .process {
   width: 100%;
   height: 100vh;
-  padding: 12.5rem 17.5rem 12.5rem 5rem;
+  padding: 12.5rem 17.5rem 12.5rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
   background-color: #333;
-  display: none;
 }
 .process__container {
   width: 100%;
@@ -586,7 +642,8 @@ img {
 .process__container__wrapper__list {
   position: absolute;
   display: flex;
-  gap: 0 11.25rem;
+  -moz-column-gap: clamp(6rem, 0.99rem + 21.37vw, 11.25rem);
+       column-gap: clamp(6rem, 0.99rem + 21.37vw, 11.25rem);
   top: 0;
   left: 0;
   padding-left: 12.5rem;
@@ -621,9 +678,15 @@ img {
 .catalog02 {
   display: grid;
   grid-template-areas: "imgLeft   imgRight" "imgBottom imgBottom";
-  gap: 6.25rem 0;
+  row-gap: 6.25rem;
   padding: 11.25rem 0;
   background-color: #333;
+}
+@media (width < 768px) {
+  .catalog02 {
+    grid-template-areas: "imgLeft" "imgRight" "imgBottom";
+    row-gap: 2.5rem;
+  }
 }
 .catalog02__content {
   display: flex;
@@ -645,8 +708,13 @@ img {
   grid-area: imgRight;
   align-self: flex-end;
 }
+@media (width < 768px) {
+  .catalog02__content.imgRight {
+    margin-left: 4rem;
+  }
+}
 .catalog02__content.imgRight .catalog02__content__img {
-  max-width: 13rem;
+  max-width: clamp(6rem, -0.679rem + 28.5vw, 13rem);
   max-height: 16rem;
   aspect-ratio: 13/16;
 }
@@ -654,6 +722,11 @@ img {
   grid-area: imgBottom;
   justify-self: center;
   flex-direction: row-reverse;
+}
+@media (width < 768px) {
+  .catalog02__content.imgBottom {
+    align-items: center;
+  }
 }
 .catalog02__content.imgBottom .catalog02__content__img {
   max-width: 22.5rem;
@@ -678,7 +751,7 @@ img {
   height: fit-content;
   padding-bottom: 0.1875rem;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 0.8125rem;
+  font-size: clamp(0.75rem, 0.69rem + 0.25vw, 0.813rem);
   font-weight: 300;
 }
 
@@ -688,26 +761,14 @@ img {
 .access {
   display: flex;
   justify-content: space-between;
-  padding: 6.25rem clamp(
-    5rem,
-    -7.5rem + 19.53vw,
-    8.125rem
-  ) 11.25rem clamp(
-    5rem,
-    -7.5rem + 19.53vw,
-    8.125rem
-  );
+  padding: 6.25rem clamp(5rem, -7.5rem + 19.53vw, 8.125rem) 11.25rem clamp(5rem, -7.5rem + 19.53vw, 8.125rem);
   background-color: #333;
 }
 @media (width < 1024px) {
   .access {
     flex-direction: column;
-    gap: 3.5rem 0;
-    padding: 6.25rem 0 11.25rem clamp(
-    5rem,
-    -7.5rem + 19.53vw,
-    8.125rem
-  );
+    row-gap: 3.5rem;
+    padding: 6.25rem 0 11.25rem clamp(2.5rem, 1.055rem + 6.16vw, 5rem);
   }
 }
 .access__title {
@@ -721,17 +782,14 @@ img {
   grid-area: content;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem 0;
+  row-gap: 1.25rem;
 }
 .access__content dl {
   display: flex;
-  gap: 0 3.5rem;
+  -moz-column-gap: 3.5rem;
+       column-gap: 3.5rem;
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: clamp(
-    0.75rem,
-    0.631rem + 0.51vw,
-    0.875rem
-  );
+  font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 300;
 }
 @media (width < 640px) {

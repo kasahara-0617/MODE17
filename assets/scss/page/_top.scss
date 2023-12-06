@@ -26,7 +26,7 @@
 
   &__logo {
     position: relative;
-    width: responsiveClamp(600, 936, 768, 1024);
+    width: responsiveClamp(300, 936, 375, 1024);
     aspect-ratio: 117/55;
     z-index: 3;
 
@@ -92,7 +92,15 @@
       "title   title"
       "content content";
     grid-template-columns: 1fr;
+    gap: 0;
     background-color: rgba($color: $black, $alpha: 0.9);
+  }
+
+  @include mq(md) {
+    grid-template-areas:
+      "title"
+      "content";
+    padding: remCalc(64) remCalc(40) remCalc(224);
   }
 
   &__scroll {
@@ -101,6 +109,10 @@
     top: 50vh;
     left: remCalc(48);
     z-index: 4;
+
+    @include mq(md) {
+      top: 80vh;
+    }
 
     &::before {
       content: "";
@@ -111,6 +123,10 @@
       height: 75vh;
       background-color: $white;
       opacity: 0.4;
+
+      @include mq(md) {
+        height: 40vh;
+      }
     }
 
     &::after {
@@ -122,6 +138,10 @@
       height: 75vh;
       background-color: $white;
       animation: scroll 2s $ease1 infinite;
+
+      @include mq(md) {
+        height: 40vh;
+      }
 
       @keyframes scroll {
         0% {
@@ -154,6 +174,10 @@
 
     @include mq(lg) {
       margin-right: remCalc(40);
+    }
+
+    @include mq(md) {
+      margin: 0;
     }
   }
 
@@ -189,10 +213,18 @@
       align-self: flex-start;
       margin-top: remCalc(192);
       font-family: $jp;
-      font-size: remCalc(20);
+      font-size: responsiveClamp(18, 20, 375, 768);
       font-weight: 500;
       line-height: 2.2;
       letter-spacing: 0.2em;
+
+      & .sm {
+        display: none;
+
+        @include mq(sm) {
+          display: block;
+        }
+      }
     }
 
     &__en {
@@ -205,8 +237,12 @@
     }
 
     &__text {
-      width: responsiveClamp(400, 440, 1024, 1280);
+      width: responsiveClamp(400, 440, 640, 1280);
       @include text;
+
+      @include mq(sm) {
+        width: 100%;
+      }
     }
   }
 }
@@ -224,6 +260,15 @@
   color: $black;
   background-color: $white;
 
+  @include mq(md) {
+    grid-template-areas:
+      "title"
+      "imgLeft"
+      "imgRight";
+    padding: remCalc(80) responsiveClamp(40, 80, 375, 768) remCalc(120)
+      responsiveClamp(40, 80, 375, 768);
+  }
+
   &__title {
     grid-area: title;
     justify-self: flex-start;
@@ -236,20 +281,24 @@
     align-items: flex-end;
     row-gap: remCalc(8);
 
-    &:first-child {
+    &.imgLeft {
       grid-area: imgLeft;
       justify-self: flex-end;
     }
 
-    &:last-child {
+    &.imgRight {
       grid-area: imgRight;
       justify-self: flex-start;
       margin-top: remCalc(260);
+
+      @include mq(md) {
+        margin-top: 0;
+      }
     }
 
     &__img {
       width: 100%;
-      max-width: remCalc(392);
+      max-width: responsiveClamp(280, 392, 768, 10224);
       aspect-ratio: 7/10;
 
       img {
@@ -261,7 +310,7 @@
 
     &__name {
       font-family: $en;
-      font-size: remCalc(13);
+      font-size: responsiveClamp(12, 13, 375, 768);
       font-weight: 300;
     }
   }
@@ -277,7 +326,7 @@
     "title   title   title"
     "imgLeft content imgRight";
   grid-template-columns: 1fr auto 1fr;
-  gap: remCalc(176) 0;
+  gap: responsiveClamp(120, 176, 375, 1024) 0;
   padding: remCalc(80) 0;
   color: $black;
   background-color: $white;
@@ -293,7 +342,7 @@
   &__title {
     grid-area: title;
     justify-self: flex-start;
-    padding-left: remCalc(80);
+    margin-left: responsiveClamp(40, 80, 375, 768);
     @include title;
   }
 
@@ -321,6 +370,7 @@
       }
 
       @include mq(md) {
+        scale: 1;
         opacity: 0.2;
       }
     }
@@ -329,11 +379,16 @@
       grid-area: imgLeft;
 
       @include mq(lg) {
-        display: none;
+        grid-area: content;
       }
 
       img {
         left: -50%;
+
+        @include mq(sm) {
+          left: 50%;
+          translate: -50%;
+        }
       }
     }
 
@@ -342,6 +397,10 @@
 
       @include mq(lg) {
         grid-area: content;
+      }
+
+      @include mq(sm) {
+        display: none;
       }
 
       img {
@@ -360,9 +419,17 @@
       flex-direction: column;
       align-items: center;
       font-family: $jp;
-      font-size: responsiveClamp(11, 14, 375, 1024);
+      font-size: responsiveClamp(12, 14, 375, 768);
       font-weight: 400;
       line-height: 2.2;
+
+      & .sm {
+        display: none;
+
+        @include mq(sm) {
+          display: block;
+        }
+      }
 
       &__big {
         display: flex;
@@ -400,13 +467,19 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: remCalc(80) remCalc(80) remCalc(240) remCalc(160);
+  padding: remCalc(80) remCalc(80) remCalc(240)
+    responsiveClamp(80, 160, 1024, 1280);
   color: $black;
   background-color: $white;
 
   @include mq(lg) {
     flex-direction: column;
-    padding-left: remCalc(60);
+    gap: remCalc(48) 0;
+    padding: remCalc(80) remCalc(80) remCalc(240) remCalc(60);
+  }
+
+  @include mq(sm) {
+    padding: remCalc(80) remCalc(40) remCalc(240);
   }
 
   &__content {
@@ -418,6 +491,10 @@
       margin-top: remCalc(32);
       width: remCalc(416);
       @include text;
+
+      @include mq(sm) {
+        width: 100%;
+      }
     }
   }
 
@@ -427,7 +504,11 @@
       "nine   nine"
       "twelve eleven";
     grid-template-rows: 1fr 1.5fr;
-    gap: 0 responsiveClamp(80, 220, 1024, 1280);
+    column-gap: responsiveClamp(32, 220, 375, 1280);
+
+    @include mq(lg) {
+      justify-content: center;
+    }
 
     &__content {
       display: grid;
@@ -441,7 +522,7 @@
       &__number {
         grid-area: number;
         font-family: $en;
-        font-size: remCalc(96);
+        font-size: responsiveClamp(56, 96, 375, 768);
         font-weight: 200;
         line-height: 1;
       }
@@ -450,7 +531,7 @@
         grid-area: title;
         margin-bottom: remCalc(5);
         font-family: $jp;
-        font-size: remCalc(14);
+        font-size: responsiveClamp(12, 14, 375, 768);
         font-weight: 500;
         line-height: 1.8;
       }
@@ -458,6 +539,7 @@
       &__img {
         grid-area: img;
         justify-self: center;
+        width: responsiveClamp(120, 160, 375, 768);
       }
 
       &.nine {
@@ -484,9 +566,9 @@
 .process {
   width: 100%;
   height: 100vh;
-  padding: remCalc(200) remCalc(280) remCalc(200) remCalc(80);
+  padding: remCalc(200) remCalc(280) remCalc(200)
+    responsiveClamp(40, 80, 375, 768);
   background-color: $black;
-  display: none;
 
   &__container {
     width: 100%;
@@ -503,7 +585,7 @@
       &__list {
         position: absolute;
         display: flex;
-        gap: 0 remCalc(180);
+        column-gap: responsiveClamp(96, 180, 375, 768);
         top: 0;
         left: 0;
         padding-left: remCalc(200);
@@ -545,9 +627,17 @@
   grid-template-areas:
     "imgLeft   imgRight"
     "imgBottom imgBottom";
-  gap: remCalc(100) 0;
+  row-gap: remCalc(100);
   padding: remCalc(180) 0;
   background-color: $black;
+
+  @include mq(md) {
+    grid-template-areas:
+      "imgLeft"
+      "imgRight"
+      "imgBottom";
+    row-gap: remCalc(40);
+  }
 
   &__content {
     display: flex;
@@ -572,8 +662,12 @@
       grid-area: imgRight;
       align-self: flex-end;
 
+      @include mq(md) {
+        margin-left: remCalc(64);
+      }
+
       & .catalog02__content__img {
-        max-width: remCalc(208);
+        max-width: responsiveClamp(96, 208, 375, 768);
         max-height: remCalc(256);
         aspect-ratio: 13/16;
       }
@@ -583,6 +677,10 @@
       grid-area: imgBottom;
       justify-self: center;
       flex-direction: row-reverse;
+
+      @include mq(md) {
+        align-items: center;
+      }
 
       & .catalog02__content__img {
         max-width: remCalc(360);
@@ -610,7 +708,7 @@
       height: fit-content;
       padding-bottom: remCalc(3);
       font-family: $en;
-      font-size: remCalc(13);
+      font-size: responsiveClamp(12, 13, 375, 768);
       font-weight: 300;
     }
   }
@@ -628,8 +726,8 @@
 
   @include mq(lg) {
     flex-direction: column;
-    gap: remCalc(56) 0;
-    padding: remCalc(100) 0 remCalc(180) responsiveClamp(80, 130, 1024, 1280);
+    row-gap: remCalc(56);
+    padding: remCalc(100) 0 remCalc(180) responsiveClamp(40, 80, 375, 1024);
   }
 
   &__title {
@@ -641,11 +739,11 @@
     grid-area: content;
     display: flex;
     flex-direction: column;
-    gap: remCalc(20) 0;
+    row-gap: remCalc(20);
 
     dl {
       display: flex;
-      gap: 0 remCalc(56);
+      column-gap: remCalc(56);
       font-family: $jp;
       font-size: responsiveClamp(12, 14, 375, 768);
       font-weight: 300;

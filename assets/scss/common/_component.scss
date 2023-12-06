@@ -16,7 +16,7 @@
 //////////////////////////////
 @mixin text {
   font-family: $jp;
-  font-size: remCalc(14);
+  font-size: responsiveClamp(12, 14, 375, 768);
   font-weight: 300;
   line-height: 2.2;
   white-space: normal;
