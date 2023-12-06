@@ -137,7 +137,7 @@
       width: 1px;
       height: 75vh;
       background-color: $white;
-      animation: scroll 2s $ease1 infinite;
+      animation: scroll 2s $ease infinite;
 
       @include mq(md) {
         height: 40vh;
@@ -214,38 +214,51 @@
     &__copy {
       align-self: flex-start;
       margin-top: remCalc(192);
-      font-family: $jp;
-      font-size: responsiveClamp(18, 20, 375, 768);
-      font-weight: 500;
-      line-height: 2.2;
-      letter-spacing: 0.2em;
+      transform: rotate3d(1, 0, 0, -45deg);
+      transition: all 1s $ease;
+      opacity: 0;
 
-      & .sm {
-        display: none;
+      &.view {
+        transform: rotate3d(0, 0, 0, 0deg);
+        opacity: 1;
+      }
 
-        @include mq(sm) {
-          display: block;
+      &__jp {
+        font-family: $jp;
+        font-size: responsiveClamp(18, 20, 375, 768);
+        font-weight: 500;
+        line-height: 2.2;
+        letter-spacing: 0.2em;
+
+        & .sm {
+          display: none;
+
+          @include mq(sm) {
+            display: block;
+          }
         }
       }
-    }
 
-    &__en {
-      margin: remCalc(16) 0 remCalc(56);
-      font-family: $en;
-      font-size: remCalc(11);
-      font-weight: 300;
-      text-transform: uppercase;
-      line-height: 2.2;
+      &__en {
+        margin: remCalc(16) 0 remCalc(56);
+        font-family: $en;
+        font-size: remCalc(11);
+        font-weight: 300;
+        text-transform: uppercase;
+        line-height: 2.2;
+      }
     }
 
     &__text {
       width: responsiveClamp(400, 440, 640, 1280);
       @include text;
-      transform: rotate3d(1, 0, 0, -60deg);
-      transition: transform 1s $ease1;
+      transform: rotate3d(1, 0, 0, -45deg);
+      transition: all 1s $ease;
+      opacity: 0;
 
-      &:hover {
+      &.view {
         transform: rotate3d(0, 0, 0, 0deg);
+        opacity: 1;
       }
 
       @include mq(sm) {
@@ -305,14 +318,39 @@
     }
 
     &__img {
+      position: relative;
       width: 100%;
-      max-width: responsiveClamp(280, 392, 768, 10224);
+      max-width: responsiveClamp(280, 392, 768, 1024);
       aspect-ratio: 7/10;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: $white;
+        scale: 1 1;
+        transform-origin: top left;
+        transition: scale 2.8s $easeOut 0.1s;
+        z-index: 2;
+      }
+
+      &.view {
+        &::before {
+          scale: 1 0;
+        }
+      }
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        scale: 1.2;
+        transition: scale 2.8s $easeOut 0.1s;
+
+        &.view {
+          scale: 1;
+        }
       }
     }
 
@@ -792,13 +830,13 @@
         background-color: $white;
         transform-origin: left top;
         scale: 1 1;
-        transition: scale 0.3s $ease1;
+        transition: scale 0.3s $ease;
       }
 
       .arrow {
         margin-left: remCalc(32);
         rotate: 45deg;
-        transition: translate 0.3s 0.3s $ease1;
+        transition: translate 0.3s 0.3s $ease;
       }
 
       &:hover {

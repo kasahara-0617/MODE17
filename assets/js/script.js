@@ -71,6 +71,41 @@ window.addEventListener("load", function () {
 });
 
 /* --------------------------------
+ *  Scroll Animation
+ * -------------------------------- */
+window.addEventListener(
+  "load",
+  function () {
+    // IntersectionObserverの作成
+    const observer = new IntersectionObserver(
+      function (entries) {
+        for (let i = 0; i < entries.length; i++) {
+          // 領域内なら処理を実行
+          if (entries[i].intersectionRatio <= 0) continue;
+          showElm(entries[i].target);
+        }
+      },
+      {
+        rootMargin: "-10% 0% -10% 0%",
+      }
+    );
+
+    // 監視対象の追加
+    const elements = document.querySelectorAll(".js-fadeIn");
+    for (let i = 0; i < elements.length; i++) {
+      observer.observe(elements[i]);
+    }
+
+    // 領域内に入ったとき実行する処理
+    function showElm(e) {
+      e.classList.add("view");
+      observer.unobserve(e);
+    }
+  },
+  false
+);
+
+/* --------------------------------
  *  Logo Animation
  * -------------------------------- */
 new Vivus("js-logo", {

@@ -18,4 +18,5 @@ $jp: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans",
 //////////////////////////////
 // ease
 //////////////////////////////
-$ease1: cubic-bezier(0.33, 1, 0.68, 1);
+$ease: cubic-bezier(0.33, 1, 0.68, 1);
+$easeOut: cubic-bezier(0.075, 0.82, 0.165, 1);
