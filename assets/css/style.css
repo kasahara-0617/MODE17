@@ -272,6 +272,8 @@ img {
   grid-area: content;
   display: flex;
   flex-direction: column;
+  transform-style: preserve-3d;
+  perspective: 31.25rem;
 }
 @media (width < 1024px) {
   .philosophy__content {
@@ -311,6 +313,11 @@ img {
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
+  transform: rotate3d(1, 0, 0, -60deg);
+  transition: transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.philosophy__content__text:hover {
+  transform: rotate3d(0, 0, 0, 0deg);
 }
 @media (width < 640px) {
   .philosophy__content__text {
@@ -624,6 +631,7 @@ img {
   height: 100vh;
   padding: 12.5rem 17.5rem 12.5rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
   background-color: #333;
+  overflow: hidden;
 }
 .process__container {
   width: 100%;
@@ -830,10 +838,14 @@ img {
 .access__content__btn .arrow {
   margin-left: 2rem;
   rotate: 45deg;
+  transition: translate 0.3s 0.3s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .access__content__btn:hover::before {
   transform-origin: right top;
   scale: 0 1;
+}
+.access__content__btn:hover .arrow {
+  translate: 5px -5px;
 }
 
 /* --------------------------------

@@ -204,6 +204,8 @@
     grid-area: content;
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
+    perspective: remCalc(500);
 
     @include mq(lg) {
       justify-self: center;
@@ -239,6 +241,12 @@
     &__text {
       width: responsiveClamp(400, 440, 640, 1280);
       @include text;
+      transform: rotate3d(1, 0, 0, -60deg);
+      transition: transform 1s $ease1;
+
+      &:hover {
+        transform: rotate3d(0, 0, 0, 0deg);
+      }
 
       @include mq(sm) {
         width: 100%;
@@ -569,6 +577,7 @@
   padding: remCalc(200) remCalc(280) remCalc(200)
     responsiveClamp(40, 80, 375, 768);
   background-color: $black;
+  overflow: hidden;
 
   &__container {
     width: 100%;
@@ -789,12 +798,17 @@
       .arrow {
         margin-left: remCalc(32);
         rotate: 45deg;
+        transition: translate 0.3s 0.3s $ease1;
       }
 
       &:hover {
         &::before {
           transform-origin: right top;
           scale: 0 1;
+        }
+
+        .arrow {
+          translate: 5px -5px;
         }
       }
     }

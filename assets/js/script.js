@@ -71,7 +71,7 @@ window.addEventListener("load", function () {
 });
 
 /* --------------------------------
- *  Circle Fit Size & Rotate
+ *  Logo Animation
  * -------------------------------- */
 new Vivus("js-logo", {
   type: "scenario",
