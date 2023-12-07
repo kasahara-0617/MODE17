@@ -5,6 +5,7 @@
 // title
 //////////////////////////////
 @mixin title {
+	grid-area: title;
   font-family: $en;
   font-size: remCalc(13);
   font-weight: 300;
@@ -21,4 +22,56 @@
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
+}
+
+//////////////////////////////
+// fadeInImg
+//////////////////////////////
+@mixin fadeInImg {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: $white;
+    scale: 1 1;
+    transform-origin: top left;
+    transition: scale 2.8s $easeOut 0.1s;
+    z-index: 2;
+  }
+
+  &.view {
+    &::before {
+      scale: 1 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.2;
+    transition: scale 2.8s $easeOut 0.1s;
+
+    &.view {
+      scale: 1;
+    }
+  }
+}
+
+//////////////////////////////
+// fadeInText
+//////////////////////////////
+@mixin fadeInText {
+  translate: 0 remCalc(20);
+  opacity: 0;
+  transition: all 2.8s $easeOut;
+
+  &.view {
+    translate: 0 0;
+    opacity: 1;
+  }
 }

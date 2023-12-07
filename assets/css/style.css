@@ -233,11 +233,11 @@ img {
 }
 .philosophy__title {
   grid-area: title;
-  justify-self: flex-end;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
   text-transform: uppercase;
+  justify-self: flex-end;
 }
 @media (width < 1024px) {
   .philosophy__title {
@@ -272,8 +272,6 @@ img {
   grid-area: content;
   display: flex;
   flex-direction: column;
-  transform-style: preserve-3d;
-  perspective: 31.25rem;
 }
 @media (width < 1024px) {
   .philosophy__content {
@@ -283,12 +281,12 @@ img {
 .philosophy__content__copy {
   align-self: flex-start;
   margin-top: 12rem;
-  transform: rotate3d(1, 0, 0, -45deg);
-  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+  translate: 0 1.25rem;
   opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .philosophy__content__copy.view {
-  transform: rotate3d(0, 0, 0, 0deg);
+  translate: 0 0;
   opacity: 1;
 }
 .philosophy__content__copy__jp {
@@ -322,12 +320,12 @@ img {
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
-  transform: rotate3d(1, 0, 0, -45deg);
-  transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
+  translate: 0 1.25rem;
   opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .philosophy__content__text.view {
-  transform: rotate3d(0, 0, 0, 0deg);
+  translate: 0 0;
   opacity: 1;
 }
 @media (width < 640px) {
@@ -355,11 +353,11 @@ img {
 }
 .catalog01__title {
   grid-area: title;
-  justify-self: flex-start;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
   text-transform: uppercase;
+  justify-self: flex-start;
 }
 .catalog01__content {
   display: flex;
@@ -382,10 +380,10 @@ img {
   }
 }
 .catalog01__content__img {
-  position: relative;
-  width: 100%;
   max-width: clamp(17.5rem, -3.5rem + 43.75vw, 24.5rem);
   aspect-ratio: 7/10;
+  position: relative;
+  width: 100%;
   overflow: hidden;
 }
 .catalog01__content__img::before {
@@ -440,12 +438,12 @@ img {
 }
 .sdg__title {
   grid-area: title;
-  justify-self: flex-start;
-  margin-left: clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
   text-transform: uppercase;
+  justify-self: flex-start;
+  margin-left: clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
 }
 .sdg__img {
   position: relative;
@@ -582,6 +580,7 @@ img {
   }
 }
 .mission__content__title {
+  grid-area: title;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
@@ -660,7 +659,7 @@ img {
 .process {
   width: 100%;
   height: 100vh;
-  padding: 12.5rem 17.5rem 12.5rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
+  padding: 12.5rem 17.5rem 0.625rem clamp(2.5rem, 0.115rem + 10.18vw, 5rem);
   background-color: #333;
   overflow: hidden;
 }
@@ -668,6 +667,7 @@ img {
   width: 100%;
 }
 .process__container__title {
+  grid-area: title;
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: 0.8125rem;
   font-weight: 300;
@@ -777,13 +777,36 @@ img {
   rotate: -90deg;
 }
 .catalog02__content__img {
+  position: relative;
   width: 100%;
+  overflow: hidden;
+}
+.catalog02__content__img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #fff;
+  scale: 1 1;
+  transform-origin: top left;
+  transition: scale 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
+  z-index: 2;
+}
+.catalog02__content__img.view::before {
+  scale: 1 0;
 }
 .catalog02__content__img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  scale: 1.2;
+  transition: scale 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
+}
+.catalog02__content__img img.view {
+  scale: 1;
+}
+.catalog02__content__img::before {
+  background-color: #333;
 }
 .catalog02__content__name {
   height: -moz-fit-content;
@@ -822,6 +845,13 @@ img {
   display: flex;
   flex-direction: column;
   row-gap: 1.25rem;
+  translate: 0 1.25rem;
+  opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.access__content.view {
+  translate: 0 0;
+  opacity: 1;
 }
 .access__content dl {
   display: flex;

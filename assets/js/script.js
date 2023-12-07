@@ -1,24 +1,4 @@
 /* --------------------------------
- *  Vue Application
- * -------------------------------- */
-// import {
-//   createApp,
-//   defineComponent,
-// } from "https://unpkg.com/vue@3.2.4/dist/vue.esm-browser.prod.js";
-
-// const Footer = defineComponent({
-//   template: `
-//         <footer id="footer">
-//           <p class="copyright"><small>&copy;copyright</small></p>
-//         </footer>
-//       `,
-// });
-
-// const app = createApp({});
-// app.component("the-footer", Footer);
-// app.mount("#app");
-
-/* --------------------------------
  *  Decrease Display Magnification
  * -------------------------------- */
 const adjustViewport = (triggerWindowWidth = 370) => {
@@ -134,7 +114,6 @@ targets.forEach((target) => {
         end: "bottom top",
         scrub: true,
         invalidateOnRefresh: true,
-        // markers: true,
       },
     }
   );
@@ -157,11 +136,28 @@ targets2.forEach((target) => {
         end: "bottom+=600 top",
         scrub: true,
         invalidateOnRefresh: true,
-        // markers: true,
       },
     }
   );
 });
+
+gsap.fromTo(
+  ".js-parallaxText",
+  {
+    y: 60,
+  },
+  {
+    y: -60,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".js-trigger",
+      start: "top+=600 bottom",
+      end: "bottom+=600 top",
+      scrub: true,
+      invalidateOnRefresh: true,
+    },
+  }
+);
 
 /* --------------------------------
  *  Circle Fit Size & Rotate
@@ -204,6 +200,5 @@ gsap.to(listElements, {
     pin: true,
     anticipatePin: 1,
     invalidateOnRefresh: true,
-    // markers: true,
   },
 });

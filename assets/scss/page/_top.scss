@@ -168,9 +168,8 @@
   }
 
   &__title {
-    grid-area: title;
-    justify-self: flex-end;
     @include title;
+    justify-self: flex-end;
 
     @include mq(lg) {
       margin-right: remCalc(40);
@@ -204,8 +203,6 @@
     grid-area: content;
     display: flex;
     flex-direction: column;
-    transform-style: preserve-3d;
-    perspective: remCalc(500);
 
     @include mq(lg) {
       justify-self: center;
@@ -214,14 +211,7 @@
     &__copy {
       align-self: flex-start;
       margin-top: remCalc(192);
-      transform: rotate3d(1, 0, 0, -45deg);
-      transition: all 1s $ease;
-      opacity: 0;
-
-      &.view {
-        transform: rotate3d(0, 0, 0, 0deg);
-        opacity: 1;
-      }
+      @include fadeInText;
 
       &__jp {
         font-family: $jp;
@@ -252,14 +242,7 @@
     &__text {
       width: responsiveClamp(400, 440, 640, 1280);
       @include text;
-      transform: rotate3d(1, 0, 0, -45deg);
-      transition: all 1s $ease;
-      opacity: 0;
-
-      &.view {
-        transform: rotate3d(0, 0, 0, 0deg);
-        opacity: 1;
-      }
+      @include fadeInText;
 
       @include mq(sm) {
         width: 100%;
@@ -291,9 +274,8 @@
   }
 
   &__title {
-    grid-area: title;
-    justify-self: flex-start;
     @include title;
+    justify-self: flex-start;
   }
 
   &__content {
@@ -318,40 +300,9 @@
     }
 
     &__img {
-      position: relative;
-      width: 100%;
       max-width: responsiveClamp(280, 392, 768, 1024);
       aspect-ratio: 7/10;
-      overflow: hidden;
-
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: $white;
-        scale: 1 1;
-        transform-origin: top left;
-        transition: scale 2.8s $easeOut 0.1s;
-        z-index: 2;
-      }
-
-      &.view {
-        &::before {
-          scale: 1 0;
-        }
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        scale: 1.2;
-        transition: scale 2.8s $easeOut 0.1s;
-
-        &.view {
-          scale: 1;
-        }
-      }
+      @include fadeInImg;
     }
 
     &__name {
@@ -386,10 +337,9 @@
   }
 
   &__title {
-    grid-area: title;
+    @include title;
     justify-self: flex-start;
     margin-left: responsiveClamp(40, 80, 375, 768);
-    @include title;
   }
 
   &__img {
@@ -612,7 +562,7 @@
 .process {
   width: 100%;
   height: 100vh;
-  padding: remCalc(200) remCalc(280) remCalc(200)
+  padding: remCalc(200) remCalc(280) remCalc(10)
     responsiveClamp(40, 80, 375, 768);
   background-color: $black;
   overflow: hidden;
@@ -742,12 +692,10 @@
     }
 
     &__img {
-      width: 100%;
+      @include fadeInImg;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      &::before {
+        background-color: $black;
       }
     }
 
@@ -778,7 +726,6 @@
   }
 
   &__title {
-    grid-area: title;
     @include title;
   }
 
@@ -787,6 +734,7 @@
     display: flex;
     flex-direction: column;
     row-gap: remCalc(20);
+    @include fadeInText;
 
     dl {
       display: flex;
