@@ -418,6 +418,7 @@
       font-size: responsiveClamp(12, 14, 375, 768);
       font-weight: 400;
       line-height: 2.2;
+      // @include fadeInText;
 
       & .sm {
         display: none;
@@ -451,7 +452,11 @@
       font-size: remCalc(11);
       font-weight: 400;
       line-height: 200%;
-      opacity: 0.5;
+      // @include fadeInText;
+
+      // &.view {
+      //   opacity: 0.5;
+      // }
     }
   }
 }
@@ -487,6 +492,7 @@
       margin-top: remCalc(32);
       width: remCalc(416);
       @include text;
+      @include fadeInText;
 
       @include mq(sm) {
         width: 100%;
@@ -734,8 +740,9 @@
     display: flex;
     flex-direction: column;
     row-gap: remCalc(20);
-    @include fadeInText;
+    // @include fadeInText;
 
+		
     dl {
       display: flex;
       column-gap: remCalc(56);

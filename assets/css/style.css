@@ -553,7 +553,6 @@ img {
   font-size: 0.6875rem;
   font-weight: 400;
   line-height: 200%;
-  opacity: 0.5;
 }
 
 /* --------------------------------
@@ -595,6 +594,13 @@ img {
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
+  translate: 0 1.25rem;
+  opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.mission__content__text.view {
+  translate: 0 0;
+  opacity: 1;
 }
 @media (width < 640px) {
   .mission__content__text {
@@ -845,13 +851,6 @@ img {
   display: flex;
   flex-direction: column;
   row-gap: 1.25rem;
-  translate: 0 1.25rem;
-  opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.access__content.view {
-  translate: 0 0;
-  opacity: 1;
 }
 .access__content dl {
   display: flex;
