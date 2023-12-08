@@ -85,22 +85,49 @@ window.addEventListener(
   false
 );
 
-gsap.fromTo(
-  ".js-eachFadeIn",
-  {
-    y: 50,
-    opacity: 0,
-  },
-  {
-    y: 0,
-    opacity: 1,
-    stagger: { each: 0.1 },
-    scrollTrigger: {
-      trigger: ".js-eachTrigger",
-      start: "top top",
+const targetPhilosophy = document.querySelectorAll(".js-eachTriggerPhilosophy");
+
+targetPhilosophy.forEach((target) => {
+  gsap.fromTo(
+    target.querySelectorAll(".js-eachFadeIn"),
+    {
+      y: 50,
+      opacity: 0,
     },
-  }
-);
+    {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      scrollTrigger: {
+        trigger: ".js-eachTriggerPhilosophy",
+        start: "top center",
+        markers: true,
+      },
+    }
+  );
+});
+
+const targetAccess = document.querySelectorAll(".js-eachTriggerAccess");
+
+targetAccess.forEach((target) => {
+  gsap.fromTo(
+    target.querySelectorAll(".js-eachFadeIn"),
+    {
+      y: 50,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      scrollTrigger: {
+        trigger: ".js-eachTriggerAccess",
+        start: "bottom top",
+        markers: true,
+      },
+    }
+  );
+});
 
 /* --------------------------------
  *  Logo Animation
@@ -114,9 +141,9 @@ new Vivus("js-logo", {
 /* --------------------------------
  *  Parallax
  * -------------------------------- */
-const targets = document.querySelectorAll(".js-parallax");
+const targets1 = document.querySelectorAll(".js-parallax1");
 
-targets.forEach((target) => {
+targets1.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
     {
@@ -167,7 +194,7 @@ gsap.fromTo(
     y: -60,
     ease: "none",
     scrollTrigger: {
-      trigger: ".js-trigger",
+      trigger: ".js-parallaxTrigger",
       start: "top+=600 bottom",
       end: "bottom+=600 top",
       scrub: true,

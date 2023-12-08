@@ -281,13 +281,6 @@ img {
 .philosophy__content__copy {
   align-self: flex-start;
   margin-top: 12rem;
-  translate: 0 1.25rem;
-  opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.philosophy__content__copy.view {
-  translate: 0 0;
-  opacity: 1;
 }
 .philosophy__content__copy__jp {
   font-family: "Noto Sans JP", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
@@ -320,13 +313,6 @@ img {
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
-  translate: 0 1.25rem;
-  opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.philosophy__content__text.view {
-  translate: 0 0;
-  opacity: 1;
 }
 @media (width < 640px) {
   .philosophy__content__text {
@@ -523,6 +509,13 @@ img {
   font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 400;
   line-height: 2.2;
+  translate: 0 1.25rem;
+  opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.sdg__content__text.view {
+  translate: 0 0;
+  opacity: 1;
 }
 .sdg__content__text .sm {
   display: none;
@@ -553,6 +546,16 @@ img {
   font-size: 0.6875rem;
   font-weight: 400;
   line-height: 200%;
+  translate: 0 1.25rem;
+  opacity: 0;
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.sdg__content__deco.view {
+  translate: 0 0;
+  opacity: 1;
+}
+.sdg__content__deco.view {
+  opacity: 0.5;
 }
 
 /* --------------------------------
