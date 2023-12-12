@@ -26,25 +26,25 @@
 
   &__logo {
     position: relative;
-    width: responsiveClamp(300, 936, 375, 1024);
+    width: responsiveClamp(300, 800, 375, 1024);
     aspect-ratio: 117/55;
     z-index: 3;
 
     svg {
       .st0 {
-        fill: #fff;
+        fill: $white;
       }
 
       .st1 {
         fill: none;
-        stroke: #f08e8d;
+        stroke: $white;
         stroke-width: 3.5;
         stroke-miterlimit: 10;
       }
 
       #base {
         opacity: 0;
-        animation: fadeIn 2s 3s forwards;
+        animation: fadeIn 2s 3.5s forwards;
 
         @keyframes fadeIn {
           0% {
@@ -108,6 +108,8 @@
     display: inline-block;
     top: 50vh;
     left: remCalc(48);
+    opacity: 0;
+    animation: fadeIn 2s 3.5s forwards;
     z-index: 4;
 
     @include mq(md) {
@@ -540,6 +542,22 @@
         grid-area: img;
         justify-self: center;
         width: responsiveClamp(120, 160, 375, 768);
+
+        path {
+          fill: none;
+          fill-opacity: 0;
+          stroke: $black;
+          stroke-width: 4;
+          transition: fill-opacity 0.5s $ease;
+        }
+
+        g.draw {
+          path {
+            fill: $black;
+            fill-opacity: 1;
+            stroke: none;
+          }
+        }
       }
 
       &.nine {
@@ -550,6 +568,10 @@
       &.eleven {
         grid-area: eleven;
         align-self: center;
+
+        .mission__sdg__content__img {
+          aspect-ratio: 4/3;
+        }
       }
 
       &.twelve {

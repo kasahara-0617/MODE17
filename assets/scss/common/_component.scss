@@ -5,7 +5,7 @@
 // title
 //////////////////////////////
 @mixin title {
-	grid-area: title;
+  grid-area: title;
   font-family: $en;
   font-size: remCalc(13);
   font-weight: 300;
@@ -55,10 +55,6 @@
     object-fit: cover;
     scale: 1.2;
     transition: scale 2.8s $easeOut 0.1s;
-
-    &.view {
-      scale: 1;
-    }
   }
 }
 
@@ -66,9 +62,9 @@
 // fadeInText
 //////////////////////////////
 @mixin fadeInText {
-  translate: 0 remCalc(20);
+  translate: 0 remCalc(50);
   opacity: 0;
-  transition: all 2.8s $easeOut;
+  transition: all 2.8s $easeOut 0.1s;
 
   &.view {
     translate: 0 0;

@@ -85,8 +85,9 @@ window.addEventListener(
   false
 );
 
-const targetPhilosophy = document.querySelectorAll(".js-eachTriggerPhilosophy");
-
+const targetPhilosophy = document.querySelectorAll(
+  ".js-eachTrigger-philosophy"
+);
 targetPhilosophy.forEach((target) => {
   gsap.fromTo(
     target.querySelectorAll(".js-eachFadeIn"),
@@ -99,16 +100,34 @@ targetPhilosophy.forEach((target) => {
       opacity: 1,
       stagger: { each: 0.1 },
       scrollTrigger: {
-        trigger: ".js-eachTriggerPhilosophy",
+        trigger: target,
         start: "top center",
-        markers: true,
       },
     }
   );
 });
 
-const targetAccess = document.querySelectorAll(".js-eachTriggerAccess");
+const targetSdg = document.querySelectorAll(".js-eachTrigger-sdg");
+targetSdg.forEach((target) => {
+  gsap.fromTo(
+    target.querySelectorAll(".js-eachFadeIn"),
+    {
+      y: 50,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      stagger: { each: 0.1 },
+      scrollTrigger: {
+        trigger: target,
+        start: "top center",
+      },
+    }
+  );
+});
 
+const targetAccess = document.querySelectorAll(".js-eachTrigger-access");
 targetAccess.forEach((target) => {
   gsap.fromTo(
     target.querySelectorAll(".js-eachFadeIn"),
@@ -121,9 +140,8 @@ targetAccess.forEach((target) => {
       opacity: 1,
       stagger: { each: 0.1 },
       scrollTrigger: {
-        trigger: ".js-eachTriggerAccess",
+        trigger: target,
         start: "bottom top",
-        markers: true,
       },
     }
   );
@@ -133,16 +151,16 @@ targetAccess.forEach((target) => {
  *  Logo Animation
  * -------------------------------- */
 new Vivus("js-logo", {
-  type: "scenario",
-  duration: 50,
+  type: "scenario-sync",
   start: "autostart",
+  pathTimingFunction: Vivus.EASE_OUT,
+  forceRender: false,
 });
 
 /* --------------------------------
  *  Parallax
  * -------------------------------- */
 const targets1 = document.querySelectorAll(".js-parallax1");
-
 targets1.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
@@ -164,7 +182,6 @@ targets1.forEach((target) => {
 });
 
 const targets2 = document.querySelectorAll(".js-parallax2");
-
 targets2.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
@@ -185,23 +202,47 @@ targets2.forEach((target) => {
   );
 });
 
-gsap.fromTo(
-  ".js-parallaxText",
-  {
-    y: 60,
-  },
-  {
-    y: -60,
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".js-parallaxTrigger",
-      start: "top+=600 bottom",
-      end: "bottom+=600 top",
-      scrub: true,
-      invalidateOnRefresh: true,
+const targetsText1 = document.querySelectorAll(".js-parallaxText1");
+targetsText1.forEach((target) => {
+  gsap.fromTo(
+    target.querySelector("p"),
+    {
+      y: 60,
     },
-  }
-);
+    {
+      y: -60,
+      ease: "none",
+      scrollTrigger: {
+        trigger: target,
+        start: "top+=600 bottom",
+        end: "bottom+=600 top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
+});
+
+const targetsText2 = document.querySelectorAll(".js-parallaxText2");
+targetsText2.forEach((target) => {
+  gsap.fromTo(
+    target.querySelector("p"),
+    {
+      y: 60,
+    },
+    {
+      y: -60,
+      ease: "none",
+      scrollTrigger: {
+        trigger: target,
+        start: "top+=600 bottom",
+        end: "bottom+=600 top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    }
+  );
+});
 
 /* --------------------------------
  *  Circle Fit Size & Rotate
@@ -226,6 +267,37 @@ window.addEventListener("scroll", function () {
     }
   });
 });
+
+/* --------------------------------
+ *  SVG Animation
+ * -------------------------------- */
+new Vivus(
+  "js-sdg-nine",
+  {
+    type: "sync",
+    duration: 150,
+    start: "inViewport",
+    pathTimingFunction: Vivus.EASE_OUT,
+    forceRender: false,
+  },
+  function (obj) {
+    obj.el.classList.add("draw");
+  }
+);
+
+new Vivus(
+  "js-sdg-eleven",
+  {
+    type: "sync",
+    duration: 150,
+    start: "inViewport",
+    pathTimingFunction: Vivus.EASE_OUT,
+    forceRender: false,
+  },
+  function (obj) {
+    obj.el.classList.add("draw");
+  }
+);
 
 /* --------------------------------
  *  Side Scroll

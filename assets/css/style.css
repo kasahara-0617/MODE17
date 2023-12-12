@@ -107,7 +107,7 @@ img {
 }
 .hero__logo {
   position: relative;
-  width: clamp(18.75rem, -4.218rem + 98vw, 58.5rem);
+  width: clamp(18.75rem, 0.693rem + 77.04vw, 50rem);
   aspect-ratio: 117/55;
   z-index: 3;
 }
@@ -116,13 +116,13 @@ img {
 }
 .hero__logo svg .st1 {
   fill: none;
-  stroke: #f08e8d;
+  stroke: #fff;
   stroke-width: 3.5;
   stroke-miterlimit: 10;
 }
 .hero__logo svg #base {
   opacity: 0;
-  animation: fadeIn 2s 3s forwards;
+  animation: fadeIn 2s 3.5s forwards;
 }
 @keyframes fadeIn {
   0% {
@@ -176,6 +176,8 @@ img {
   display: inline-block;
   top: 50vh;
   left: 3rem;
+  opacity: 0;
+  animation: fadeIn 2s 3.5s forwards;
   z-index: 4;
 }
 @media (width < 768px) {
@@ -393,9 +395,6 @@ img {
   scale: 1.2;
   transition: scale 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
 }
-.catalog01__content__img img.view {
-  scale: 1;
-}
 .catalog01__content__name {
   font-family: "Outfit", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
   font-size: clamp(0.75rem, 0.69rem + 0.25vw, 0.813rem);
@@ -509,9 +508,9 @@ img {
   font-size: clamp(0.75rem, 0.631rem + 0.51vw, 0.875rem);
   font-weight: 400;
   line-height: 2.2;
-  translate: 0 1.25rem;
+  translate: 0 3.125rem;
   opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
 }
 .sdg__content__text.view {
   translate: 0 0;
@@ -546,9 +545,9 @@ img {
   font-size: 0.6875rem;
   font-weight: 400;
   line-height: 200%;
-  translate: 0 1.25rem;
+  translate: 0 3.125rem;
   opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
 }
 .sdg__content__deco.view {
   translate: 0 0;
@@ -597,9 +596,9 @@ img {
   line-height: 2.2;
   white-space: normal;
   text-align: justify;
-  translate: 0 1.25rem;
+  translate: 0 3.125rem;
   opacity: 0;
-  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
 }
 .mission__content__text.view {
   translate: 0 0;
@@ -649,6 +648,18 @@ img {
   justify-self: center;
   width: clamp(7.5rem, 5.115rem + 10.18vw, 10rem);
 }
+.mission__sdg__content__img path {
+  fill: none;
+  fill-opacity: 0;
+  stroke: #333;
+  stroke-width: 4;
+  transition: fill-opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.mission__sdg__content__img g.draw path {
+  fill: #333;
+  fill-opacity: 1;
+  stroke: none;
+}
 .mission__sdg__content.nine {
   grid-area: nine;
   justify-self: center;
@@ -656,6 +667,9 @@ img {
 .mission__sdg__content.eleven {
   grid-area: eleven;
   align-self: center;
+}
+.mission__sdg__content.eleven .mission__sdg__content__img {
+  aspect-ratio: 4/3;
 }
 .mission__sdg__content.twelve {
   grid-area: twelve;
@@ -810,9 +824,6 @@ img {
      object-fit: cover;
   scale: 1.2;
   transition: scale 2.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
-}
-.catalog02__content__img img.view {
-  scale: 1;
 }
 .catalog02__content__img::before {
   background-color: #333;
