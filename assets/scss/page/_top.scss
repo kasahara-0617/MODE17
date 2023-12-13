@@ -202,12 +202,29 @@
   }
 
   &__content {
+    position: relative;
     grid-area: content;
     display: flex;
     flex-direction: column;
 
     @include mq(lg) {
       justify-self: center;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: $black;
+      transform-origin: top left;
+      transition: scale 1.8s $easeOut 0.1s;
+      z-index: 1;
+    }
+
+    &.view {
+      &::before {
+        scale: 0 1;
+      }
     }
 
     &__copy {
@@ -418,7 +435,6 @@
       font-size: responsiveClamp(12, 14, 375, 768);
       font-weight: 400;
       line-height: 2.2;
-      @include fadeInText;
 
       & .sm {
         display: none;
@@ -452,7 +468,6 @@
       font-size: remCalc(11);
       font-weight: 400;
       line-height: 200%;
-      @include fadeInText;
 
       &.view {
         opacity: 0.5;
@@ -492,7 +507,6 @@
       margin-top: remCalc(32);
       width: remCalc(416);
       @include text;
-      @include fadeInText;
 
       @include mq(sm) {
         width: 100%;
@@ -654,6 +668,7 @@
 .catalog02 {
   display: grid;
   grid-template-areas:
+    "title     title"
     "imgLeft   imgRight"
     "imgBottom imgBottom";
   row-gap: remCalc(100);
@@ -662,10 +677,17 @@
 
   @include mq(md) {
     grid-template-areas:
+      "title"
       "imgLeft"
       "imgRight"
       "imgBottom";
     row-gap: remCalc(40);
+  }
+
+  &__title {
+    @include title;
+    justify-self: flex-end;
+    padding-right: responsiveClamp(40, 80, 375, 768);
   }
 
   &__content {
@@ -762,11 +784,27 @@
   }
 
   &__content {
+    position: relative;
     grid-area: content;
     display: flex;
     flex-direction: column;
     row-gap: remCalc(20);
-    // @include fadeInText;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: $black;
+      transform-origin: top left;
+      transition: scale 1.8s $easeOut 0.1s;
+      z-index: 1;
+    }
+
+    &.view {
+      &::before {
+        scale: 0 1;
+      }
+    }
 
     dl {
       display: flex;

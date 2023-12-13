@@ -85,66 +85,41 @@ window.addEventListener(
   false
 );
 
-const targetPhilosophy = document.querySelectorAll(
-  ".js-eachTrigger-philosophy"
-);
-targetPhilosophy.forEach((target) => {
-  gsap.fromTo(
-    target.querySelectorAll(".js-eachFadeIn"),
-    {
-      y: 50,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      scrollTrigger: {
-        trigger: target,
-        start: "top center",
-      },
-    }
-  );
-});
+const fadeTargets = [
+  {
+    triggerClass: ".js-eachTrigger-sdg",
+    fadeClass: ".js-eachFadeIn",
+    start: "top center+=200",
+  },
+  {
+    triggerClass: ".js-eachTrigger-mission",
+    fadeClass: ".js-eachFadeIn",
+    start: "top center+=200",
+  },
+];
 
-const targetSdg = document.querySelectorAll(".js-eachTrigger-sdg");
-targetSdg.forEach((target) => {
-  gsap.fromTo(
-    target.querySelectorAll(".js-eachFadeIn"),
-    {
-      y: 50,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      scrollTrigger: {
-        trigger: target,
-        start: "top center+=400",
+fadeTargets.forEach(({ triggerClass, fadeClass, start }) => {
+  const targetElements = document.querySelectorAll(triggerClass);
+  targetElements.forEach((target) => {
+    gsap.fromTo(
+      target.querySelectorAll(fadeClass),
+      {
+        y: 30,
+        opacity: 0,
       },
-    }
-  );
-});
-
-const targetAccess = document.querySelectorAll(".js-eachTrigger-access");
-targetAccess.forEach((target) => {
-  gsap.fromTo(
-    target.querySelectorAll(".js-eachFadeIn"),
-    {
-      y: 50,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      stagger: { each: 0.1 },
-      scrollTrigger: {
-        trigger: target,
-        start: "bottom top",
-      },
-    }
-  );
+      {
+        y: 0,
+        opacity: 1,
+        ease: "power1.out",
+        stagger: { each: 0.1 },
+        scrollTrigger: {
+          trigger: target,
+          start: start,
+          // markers: true,
+        },
+      }
+    );
+  });
 });
 
 /* --------------------------------
@@ -160,32 +135,10 @@ new Vivus("js-logo", {
 /* --------------------------------
  *  Parallax
  * -------------------------------- */
-const targets1 = document.querySelectorAll(".js-parallax1");
-targets1.forEach((target) => {
-  gsap.fromTo(
-    target.querySelector("img"),
-    {
-      yPercent: 12,
-    },
-    {
-      yPercent: -12,
-      ease: "none",
-      scrollTrigger: {
-        trigger: target,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
-    }
-  );
-});
-
 const maxWidth = 1480;
 const minWidth = 800;
 const screenWidth = window.innerWidth;
 let adjustedWidth;
-
 if (screenWidth < 375) {
   adjustedWidth = maxWidth;
 } else {
@@ -195,76 +148,73 @@ if (screenWidth < 375) {
 const scrollStart = `top+=${adjustedWidth} bottom`;
 const scrollEnd = `bottom+=${adjustedWidth} top`;
 
-const targets2 = document.querySelectorAll(".js-parallax2");
+const ParallaxTargets = [
+  {
+    triggerClass: ".js-hero",
+    childElements: "h1",
+    yOffset: 0,
+    reversedYOffset: -120,
+    start: "bottom bottom",
+    end: "bottom top",
+  },
+  {
+    triggerClass: ".js-parallax1",
+    childElements: "img",
+    yOffset: 12,
+    reversedYOffset: -12,
+    start: "top bottom",
+    end: "bottom top",
+  },
+  {
+    triggerClass: ".js-parallaxText1",
+    childElements: "p",
+    yOffset: 100,
+    reversedYOffset: -150,
+    start: "top+=600 bottom",
+    end: "bottom+=600 top",
+  },
+  {
+    triggerClass: ".js-parallax2",
+    childElements: "img",
+    yOffset: 12,
+    reversedYOffset: -12,
+    start: scrollStart,
+    end: scrollEnd,
+  },
+  {
+    triggerClass: ".js-parallaxText2",
+    childElements: "p",
+    yOffset: 120,
+    reversedYOffset: -120,
+    start: scrollStart,
+    end: scrollEnd,
+  },
+];
 
-targets2.forEach((target) => {
-  gsap.fromTo(
-    target.querySelector("img"),
-    {
-      yPercent: 12,
-    },
-    {
-      yPercent: -12,
-      ease: "none",
-      scrollTrigger: {
-        trigger: target,
-        start: scrollStart,
-        end: scrollEnd,
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
-    }
-  );
-});
-
-const targetsText1 = document.querySelectorAll(".js-parallaxText1");
-targetsText1.forEach((target) => {
-  gsap.fromTo(
-    target.querySelector("p"),
-    {
-      y: 30,
-    },
-    {
-      y: -50,
-      ease: "none",
-      scrollTrigger: {
-        trigger: target,
-        start: "top+=600 bottom",
-        end: "bottom+=600 top",
-        scrub: true,
-        invalidateOnRefresh: true,
-        // markers: true,
-      },
-    }
-  );
-});
-
-const targetsText2 = document.querySelectorAll(".js-parallaxText2");
-
-targetsText2.forEach((target) => {
-  const scrollStart = `top+=${adjustedWidth} bottom`;
-  const scrollEnd = `bottom+=${adjustedWidth} top`;
-
-  console.log(scrollStart);
-  gsap.fromTo(
-    target.querySelector("p"),
-    {
-      y: 60,
-    },
-    {
-      y: -60,
-      ease: "none",
-      scrollTrigger: {
-        trigger: target,
-        start: scrollStart,
-        end: scrollEnd,
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
-    }
-  );
-});
-
+ParallaxTargets.forEach(
+  ({ triggerClass, childElements, yOffset, reversedYOffset, start, end }) => {
+    const targetElements = document.querySelectorAll(triggerClass);
+    targetElements.forEach((target) => {
+      gsap.fromTo(
+        target.querySelectorAll(childElements),
+        {
+          yPercent: yOffset,
+        },
+        {
+          yPercent: reversedYOffset,
+          ease: "none",
+          scrollTrigger: {
+            trigger: target,
+            start: start,
+            end: end,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    });
+  }
+);
 /* --------------------------------
  *  Circle Fit Size & Rotate
  * -------------------------------- */
@@ -297,7 +247,7 @@ function animateSVG(elementId) {
     elementId,
     {
       type: "sync",
-      duration: 150,
+      duration: 180,
       start: "inViewport",
       pathTimingFunction: Vivus.EASE_OUT,
       forceRender: false,

@@ -57,17 +57,3 @@
     transition: scale 2.8s $easeOut 0.1s;
   }
 }
-
-//////////////////////////////
-// fadeInText
-//////////////////////////////
-@mixin fadeInText {
-  translate: 0 remCalc(50);
-  opacity: 0;
-  transition: all 2.8s $easeOut 0.1s;
-
-  &.view {
-    translate: 0 0;
-    opacity: 1;
-  }
-}
