@@ -542,12 +542,13 @@
         grid-area: img;
         justify-self: center;
         width: responsiveClamp(120, 160, 375, 768);
+				// border: 2px solid black;
 
         path {
           fill: none;
           fill-opacity: 0;
           stroke: $black;
-          stroke-width: 4;
+          stroke-width: 5;
           transition: fill-opacity 0.5s $ease;
         }
 

@@ -652,7 +652,7 @@ img {
   fill: none;
   fill-opacity: 0;
   stroke: #333;
-  stroke-width: 4;
+  stroke-width: 5;
   transition: fill-opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1);
 }
 .mission__sdg__content__img g.draw path {
