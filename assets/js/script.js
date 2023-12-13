@@ -299,6 +299,20 @@ new Vivus(
   }
 );
 
+new Vivus(
+  "js-sdg-twelve",
+  {
+    type: "sync",
+    duration: 150,
+    start: "inViewport",
+    pathTimingFunction: Vivus.EASE_OUT,
+    forceRender: false,
+  },
+  function (obj) {
+    obj.el.classList.add("draw");
+  }
+);
+
 /* --------------------------------
  *  Side Scroll
  * -------------------------------- */
