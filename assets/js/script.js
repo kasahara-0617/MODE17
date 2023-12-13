@@ -121,7 +121,7 @@ targetSdg.forEach((target) => {
       stagger: { each: 0.1 },
       scrollTrigger: {
         trigger: target,
-        start: "top center",
+        start: "top center+=400",
       },
     }
   );
@@ -181,7 +181,22 @@ targets1.forEach((target) => {
   );
 });
 
+const maxWidth = 1480;
+const minWidth = 800;
+const screenWidth = window.innerWidth;
+let adjustedWidth;
+
+if (screenWidth < 375) {
+  adjustedWidth = maxWidth;
+} else {
+  adjustedWidth =
+    maxWidth - (maxWidth - minWidth) * ((screenWidth - 375) / (1440 - 375));
+}
+const scrollStart = `top+=${adjustedWidth} bottom`;
+const scrollEnd = `bottom+=${adjustedWidth} top`;
+
 const targets2 = document.querySelectorAll(".js-parallax2");
+
 targets2.forEach((target) => {
   gsap.fromTo(
     target.querySelector("img"),
@@ -193,8 +208,8 @@ targets2.forEach((target) => {
       ease: "none",
       scrollTrigger: {
         trigger: target,
-        start: "top+=600 bottom",
-        end: "bottom+=600 top",
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -207,10 +222,10 @@ targetsText1.forEach((target) => {
   gsap.fromTo(
     target.querySelector("p"),
     {
-      y: 60,
+      y: 30,
     },
     {
-      y: -60,
+      y: -50,
       ease: "none",
       scrollTrigger: {
         trigger: target,
@@ -218,13 +233,19 @@ targetsText1.forEach((target) => {
         end: "bottom+=600 top",
         scrub: true,
         invalidateOnRefresh: true,
+        // markers: true,
       },
     }
   );
 });
 
 const targetsText2 = document.querySelectorAll(".js-parallaxText2");
+
 targetsText2.forEach((target) => {
+  const scrollStart = `top+=${adjustedWidth} bottom`;
+  const scrollEnd = `bottom+=${adjustedWidth} top`;
+
+  console.log(scrollStart);
   gsap.fromTo(
     target.querySelector("p"),
     {
@@ -235,8 +256,8 @@ targetsText2.forEach((target) => {
       ease: "none",
       scrollTrigger: {
         trigger: target,
-        start: "top+=600 bottom",
-        end: "bottom+=600 top",
+        start: scrollStart,
+        end: scrollEnd,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -271,47 +292,30 @@ window.addEventListener("scroll", function () {
 /* --------------------------------
  *  SVG Animation
  * -------------------------------- */
-new Vivus(
-  "js-sdg-nine",
-  {
-    type: "sync",
-    duration: 150,
-    start: "inViewport",
-    pathTimingFunction: Vivus.EASE_OUT,
-    forceRender: false,
-  },
-  function (obj) {
-    obj.el.classList.add("draw");
-  }
-);
+function animateSVG(elementId) {
+  new Vivus(
+    elementId,
+    {
+      type: "sync",
+      duration: 150,
+      start: "inViewport",
+      pathTimingFunction: Vivus.EASE_OUT,
+      forceRender: false,
+    },
+    function (obj) {
+      obj.el.classList.add("draw");
+    }
+  );
+}
 
-new Vivus(
-  "js-sdg-eleven",
-  {
-    type: "sync",
-    duration: 150,
-    start: "inViewport",
-    pathTimingFunction: Vivus.EASE_OUT,
-    forceRender: false,
-  },
-  function (obj) {
-    obj.el.classList.add("draw");
-  }
-);
-
-new Vivus(
-  "js-sdg-twelve",
-  {
-    type: "sync",
-    duration: 150,
-    start: "inViewport",
-    pathTimingFunction: Vivus.EASE_OUT,
-    forceRender: false,
-  },
-  function (obj) {
-    obj.el.classList.add("draw");
-  }
-);
+animateSVG("js-sdg-nine");
+animateSVG("js-sdg-eleven");
+animateSVG("js-sdg-twelve");
+animateSVG("js-pro-01");
+animateSVG("js-pro-02");
+animateSVG("js-pro-03");
+animateSVG("js-pro-04");
+animateSVG("js-pro-05");
 
 /* --------------------------------
  *  Side Scroll

@@ -542,7 +542,6 @@
         grid-area: img;
         justify-self: center;
         width: responsiveClamp(120, 160, 375, 768);
-				// border: 2px solid black;
 
         path {
           fill: none;
@@ -635,6 +634,12 @@
               width: 100%;
               height: 100%;
               object-fit: contain;
+            }
+
+            .cls-1 {
+              fill: none;
+              stroke: $white;
+              stroke-width: 5;
             }
           }
         }

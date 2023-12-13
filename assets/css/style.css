@@ -733,6 +733,11 @@ img {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.process__container__wrapper__list__item__img .cls-1 {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 5;
+}
 
 /* --------------------------------
 * catalog02
