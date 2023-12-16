@@ -85,43 +85,6 @@ window.addEventListener(
   false
 );
 
-const fadeTargets = [
-  {
-    triggerClass: ".js-eachTrigger-sdg",
-    fadeClass: ".js-eachFadeIn",
-    start: "top center+=200",
-  },
-  {
-    triggerClass: ".js-eachTrigger-mission",
-    fadeClass: ".js-eachFadeIn",
-    start: "top center+=200",
-  },
-];
-
-fadeTargets.forEach(({ triggerClass, fadeClass, start }) => {
-  const targetElements = document.querySelectorAll(triggerClass);
-  targetElements.forEach((target) => {
-    gsap.fromTo(
-      target.querySelectorAll(fadeClass),
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        ease: "power1.out",
-        stagger: { each: 0.1 },
-        scrollTrigger: {
-          trigger: target,
-          start: start,
-          // markers: true,
-        },
-      }
-    );
-  });
-});
-
 /* --------------------------------
  *  Logo Animation
  * -------------------------------- */
@@ -189,6 +152,15 @@ const ParallaxTargets = [
     start: scrollStart,
     end: scrollEnd,
   },
+
+  {
+    triggerClass: ".js-parallaxApp",
+    childElements: "a",
+    yOffset: 0,
+    reversedYOffset: -90,
+    start: scrollStart,
+    end: scrollEnd,
+  },
 ];
 
 ParallaxTargets.forEach(
@@ -209,12 +181,14 @@ ParallaxTargets.forEach(
             end: end,
             scrub: true,
             invalidateOnRefresh: true,
+            // markers: true,
           },
         }
       );
     });
   }
 );
+
 /* --------------------------------
  *  Circle Fit Size & Rotate
  * -------------------------------- */
@@ -285,4 +259,24 @@ gsap.to(listElements, {
     anticipatePin: 1,
     invalidateOnRefresh: true,
   },
+});
+
+/* --------------------------------
+ *  Stalker
+ * -------------------------------- */
+const stalker = document.querySelector(".js-stalker");
+const app = document.querySelector(".js-app");
+
+document.addEventListener("mousemove", (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  stalker.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+app.addEventListener("mouseenter", () => {
+  stalker.classList.add("js-hover");
+});
+
+app.addEventListener("mouseleave", () => {
+ stalker.classList.remove("js-hover");
 });
