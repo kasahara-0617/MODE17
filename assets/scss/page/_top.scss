@@ -879,17 +879,17 @@
           rotate: 45deg;
         }
 
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 1px;
-          height: remCalc(8);
-          background-color: $white;
-          transform-origin: top center;
-          rotate: -45deg;
-        }
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   top: 0;
+        //   right: 0;
+        //   width: 1px;
+        //   height: remCalc(8);
+        //   background-color: $white;
+        //   transform-origin: top center;
+        //   rotate: -45deg;
+        // }
       }
 
       &:hover {
@@ -963,19 +963,19 @@
         transition: scale 0.3s $ease 0.6s;
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 1px;
-        height: remCalc(8);
-        background-color: $white;
-        transform-origin: top center;
-        scale: 0 1;
-        rotate: -45deg;
-        transition: scale 0.3s $ease 0.6s;
-      }
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   top: 0;
+      //   right: 0;
+      //   width: 1px;
+      //   height: remCalc(8);
+      //   background-color: $white;
+      //   transform-origin: top center;
+      //   scale: 0 1;
+      //   rotate: -45deg;
+      //   transition: scale 0.3s $ease 0.6s;
+      // }
     }
 
     &.js-hover {
