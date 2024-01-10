@@ -278,5 +278,147 @@ app.addEventListener("mouseenter", () => {
 });
 
 app.addEventListener("mouseleave", () => {
- stalker.classList.remove("js-hover");
+  stalker.classList.remove("js-hover");
 });
+
+/* --------------------------------
+ *  Matter.js
+ * -------------------------------- */
+// 使用モジュール
+const Engine = Matter.Engine,
+  Render = Matter.Render,
+  Runner = Matter.Runner,
+  Body = Matter.Body,
+  Bodies = Matter.Bodies,
+  Composite = Matter.Composite,
+  Composites = Matter.Composites,
+  Vector = Matter.Vector,
+  Constraint = Matter.Constraint,
+  MouseConstraint = Matter.MouseConstraint,
+  Mouse = Matter.Mouse,
+  Events = Matter.Events;
+
+// エンジンの生成
+const engine = Engine.create();
+
+// キャンバスの生成
+const canvas = $("#js-canvas")[0];
+
+// レンダリングの設定
+const render = Render.create({
+  element: canvas,
+  engine: engine,
+  options: {
+    width: Math.min(Math.max(window.innerWidth * 0.4, 400), 440),
+    height: Math.min(Math.max(window.innerWidth * 0.4, 488), 536),
+    background: "#fff",
+    wireframes: false,
+  },
+});
+
+// レンダラーで使用される要素にクラスを追加
+render.canvas.classList.add("curved-top");
+
+// マウスの設定
+const mouse = Mouse.create(canvas);
+const mouseConstraint = MouseConstraint.create(engine, {
+  mouse: mouse,
+  constraint: {
+    render: {
+      visible: false,
+    },
+  },
+});
+
+Composite.add(engine.world, mouseConstraint);
+render.mouse = mouse;
+
+// レンダリングを実行
+Render.run(render);
+
+// エンジンを実行
+Runner.run(engine);
+
+// 壁の作成
+const wallThickness = 1;
+const canvasWidth = render.options.width;
+const canvasHeight = render.options.height;
+
+const leftWall = Bodies.rectangle(
+  0,
+  canvasHeight / 2,
+  wallThickness,
+  canvasHeight,
+  {
+    isStatic: true,
+    render: {
+      fillStyle: "rgba(0,0,0,0)",
+    },
+  }
+);
+const rightWall = Bodies.rectangle(
+  canvasWidth,
+  canvasHeight / 2,
+  wallThickness,
+  canvasHeight,
+  {
+    isStatic: true,
+    render: {
+      fillStyle: "rgba(0,0,0,0)",
+    },
+  }
+);
+const bottomWall = Bodies.rectangle(
+  canvasWidth / 2,
+  canvasHeight,
+  canvasWidth,
+  wallThickness,
+  {
+    isStatic: true,
+    render: {
+      fillStyle: "rgba(0,0,0,0)",
+    },
+  }
+);
+
+// オブジェクト
+const numRectangles = 3;
+const rectColor = "#333";
+const rectangles = [];
+for (let i = 0; i < numRectangles; i++) {
+  const rectangle = Bodies.rectangle(
+    200 + i * 50, // X座標をずらして配置
+    50,
+    160,
+    60,
+    {
+      restitution: 0.5,
+      friction: 0.9,
+      render: {
+        fillStyle: rectColor,
+        // sprite: {
+        //   texture: "./images/catalog-00.webp",
+        // },
+      },
+    }
+  );
+  rectangles.push(rectangle);
+}
+Composite.add(engine.world, rectangles);
+
+const circle = Bodies.circle(200, 50 - 50, 50, {
+  restitution: 0.5,
+  friction: 0.9,
+});
+const triangle = Bodies.polygon(200, 50, 3, 50, {
+  restitution: 0.5,
+  friction: 0.9,
+});
+
+Composite.add(engine.world, [
+  leftWall,
+  rightWall,
+  bottomWall,
+  circle,
+  triangle,
+]);

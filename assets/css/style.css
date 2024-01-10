@@ -250,22 +250,15 @@ img {
     margin: 0;
   }
 }
-.philosophy__img {
+.philosophy__canvas {
   grid-area: img;
   justify-self: flex-end;
-  width: 100%;
-  max-width: clamp(25rem, 15rem + 15.63vw, 27.5rem);
-  aspect-ratio: 55/67;
 }
-.philosophy__img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.philosophy__canvas .curved-top {
   border-radius: 13.75rem 13.75rem 0 0;
 }
 @media (width < 1024px) {
-  .philosophy__img {
+  .philosophy__canvas {
     display: none;
   }
 }
