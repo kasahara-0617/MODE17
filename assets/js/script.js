@@ -382,23 +382,26 @@ const bottomWall = Bodies.rectangle(
 );
 
 // オブジェクト
-const numRectangles = 3;
-const rectColor = "#333";
+const imagePaths = [
+  "../../assets/images/philosophy-01.png",
+  "../../assets/images/philosophy-02.png",
+  "../../assets/images/philosophy-03.png",
+];
+const numRectangles = imagePaths.length;
 const rectangles = [];
 for (let i = 0; i < numRectangles; i++) {
   const rectangle = Bodies.rectangle(
-    200 + i * 50, // X座標をずらして配置
-    50,
+    Math.random() * (canvasWidth - 100) + 50,
+    Math.random() * (canvasHeight - 100) + 50,
     160,
     60,
     {
-      restitution: 0.5,
       friction: 0.9,
       render: {
-        fillStyle: rectColor,
-        // sprite: {
-        //   texture: "./images/catalog-00.webp",
-        // },
+        fillStyle: "#333",
+        sprite: {
+          texture: imagePaths[i],
+        },
       },
     }
   );
@@ -406,14 +409,33 @@ for (let i = 0; i < numRectangles; i++) {
 }
 Composite.add(engine.world, rectangles);
 
-const circle = Bodies.circle(200, 50 - 50, 50, {
-  restitution: 0.5,
-  friction: 0.9,
-});
-const triangle = Bodies.polygon(200, 50, 3, 50, {
-  restitution: 0.5,
-  friction: 0.9,
-});
+const circle = Bodies.circle(
+  Math.random() * (canvasWidth - 100) + 50,
+  50 - 50,
+  50,
+  {
+    friction: 0.9,
+    render: {
+      fillStyle: "#f7d300",
+      sprite: {
+        texture: "../../assets/images/philosophy-04.png",
+      },
+    },
+  }
+);
+
+const triangle = Bodies.polygon(
+  Math.random() * (canvasWidth - 100) + 50,
+  50,
+  3,
+  60,
+  {
+    friction: 0.9,
+    render: {
+      fillStyle: "#ed6a02",
+    },
+  }
+);
 
 Composite.add(engine.world, [
   leftWall,
