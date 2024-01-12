@@ -448,4 +448,44 @@ function initMatterJs() {
     circle,
     triangle,
   ]);
+
+  // スクロールイベントを監視して、物体に力を適用する
+  const scrollEvent = () => {
+    const scrollDelta = window.scrollY - scrollY;
+
+    allBodies.forEach((body) => {
+      if (body.label === "_noMap") {
+        return;
+      }
+
+      if (Math.floor(scrollDelta) % 5 === 0) {
+        Body.applyForce(
+          body,
+          { x: body.position.x, y: body.position.y },
+          {
+            x:
+              (Math.floor(Math.random() * 2) === 0 ? -1 : 1) *
+              Math.random() *
+              0.01,
+            y: -0.04,
+          },
+          triangle,
+          { x: triangle.position.x, y: triangle.position.y },
+          {
+            x: (Math.floor(Math.random() * 2) === 0 ? -1 : 1) * 0.005,
+            y: -0.00005,
+          }
+        );
+      }
+    });
+  };
+
+  // スクロールイベントのリスナーを追加
+  window.addEventListener("scroll", scrollEvent);
+
+  // 初期スクロール位置を取得
+  const scrollY = window.scrollY;
+
+  // すべてのボディを取得
+  const allBodies = Composite.allBodies(engine.world);
 }
