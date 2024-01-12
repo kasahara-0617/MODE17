@@ -253,9 +253,11 @@ img {
 .philosophy__canvas {
   grid-area: img;
   justify-self: flex-end;
-}
-.philosophy__canvas .curved-top {
+  width: clamp(25rem, 18.846rem + 9.62vw, 27.5rem);
+  aspect-ratio: 55/67;
+  background-color: #fff;
   border-radius: 13.75rem 13.75rem 0 0;
+  overflow: hidden;
 }
 @media (width < 1024px) {
   .philosophy__canvas {

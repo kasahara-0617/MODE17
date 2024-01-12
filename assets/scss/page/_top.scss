@@ -184,10 +184,11 @@
   &__canvas {
     grid-area: img;
     justify-self: flex-end;
-
-    .curved-top {
-      border-radius: remCalc(220) remCalc(220) 0 0;
-    }
+    width: responsiveClamp(400, 440, 1024, 1440);
+    aspect-ratio: 55/67;
+    background-color: $white;
+    border-radius: remCalc(220) remCalc(220) 0 0;
+		overflow: hidden;
 
     @include mq(lg) {
       display: none;

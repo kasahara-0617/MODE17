@@ -63,7 +63,12 @@ window.addEventListener(
           // 領域内なら処理を実行
           if (entries[i].intersectionRatio <= 0) continue;
           showElm(entries[i].target);
-          initMatterJs();
+
+          if (entries[i].intersectionRatio > 0) {
+            initMatterJs();
+            // 一度呼び出したら監視を停止する
+            observer.unobserve(entries[i].target);
+          }
         }
       },
       {
@@ -318,9 +323,6 @@ function initMatterJs() {
     },
   });
 
-  // レンダラーで使用される要素にクラスを追加
-  render.canvas.classList.add("curved-top");
-
   // マウスの設定
   const mouse = Mouse.create(canvas);
   const mouseConstraint = MouseConstraint.create(engine, {
@@ -430,7 +432,7 @@ function initMatterJs() {
     Math.random() * (canvasWidth - 100) + 50,
     50,
     3,
-    60,
+    55,
     {
       friction: 0.9,
       render: {
@@ -446,198 +448,4 @@ function initMatterJs() {
     circle,
     triangle,
   ]);
-
-  // オブザーバーのコールバック関数
-  const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // 要素がビューポートに入ったときの処理
-        // 例: データの読み込み
-        loadData(entry.target);
-
-        // 必要ならば、監視を解除
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-
-  // オブザーバーのオプション（任意で調整可能）
-  const observerOptions = {
-    root: null, // ビューポートをルートとする
-    rootMargin: "0px", // マージンはなし
-    threshold: 0.1, // 10%の要素が見えたらトリガー
-  };
-
-  // オブザーバーの作成
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  // 監視する要素を追加
-  document.querySelectorAll(".lazy-load").forEach((element) => {
-    observer.observe(element);
-  });
-
-  // データを読み込む関数（例）
-  function loadData(element) {
-    // ここにデータ読み込みの処理を記述
-    // 使用モジュール
-    const Engine = Matter.Engine,
-      Render = Matter.Render,
-      Runner = Matter.Runner,
-      Body = Matter.Body,
-      Bodies = Matter.Bodies,
-      Composite = Matter.Composite,
-      Composites = Matter.Composites,
-      Vector = Matter.Vector,
-      Constraint = Matter.Constraint,
-      MouseConstraint = Matter.MouseConstraint,
-      Mouse = Matter.Mouse,
-      Events = Matter.Events;
-
-    // エンジンの生成
-    const engine = Engine.create();
-
-    // キャンバスの生成
-    const canvas = $("#js-canvas")[0];
-
-    // レンダリングの設定
-    const render = Render.create({
-      element: canvas,
-      engine: engine,
-      options: {
-        width: Math.min(Math.max(window.innerWidth * 0.4, 400), 440),
-        height: Math.min(Math.max(window.innerWidth * 0.4, 488), 536),
-        background: "#fff",
-        wireframes: false,
-      },
-    });
-
-    // レンダラーで使用される要素にクラスを追加
-    render.canvas.classList.add("curved-top");
-
-    // マウスの設定
-    const mouse = Mouse.create(canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      constraint: {
-        render: {
-          visible: false,
-        },
-      },
-    });
-
-    Composite.add(engine.world, mouseConstraint);
-    render.mouse = mouse;
-
-    // レンダリングを実行
-    Render.run(render);
-
-    // エンジンを実行
-    Runner.run(engine);
-
-    // 壁の作成
-    const wallThickness = 1;
-    const canvasWidth = render.options.width;
-    const canvasHeight = render.options.height;
-
-    const leftWall = Bodies.rectangle(
-      0,
-      canvasHeight / 2,
-      wallThickness,
-      canvasHeight,
-      {
-        isStatic: true,
-        render: {
-          fillStyle: "rgba(0,0,0,0)",
-        },
-      }
-    );
-    const rightWall = Bodies.rectangle(
-      canvasWidth,
-      canvasHeight / 2,
-      wallThickness,
-      canvasHeight,
-      {
-        isStatic: true,
-        render: {
-          fillStyle: "rgba(0,0,0,0)",
-        },
-      }
-    );
-    const bottomWall = Bodies.rectangle(
-      canvasWidth / 2,
-      canvasHeight,
-      canvasWidth,
-      wallThickness,
-      {
-        isStatic: true,
-        render: {
-          fillStyle: "rgba(0,0,0,0)",
-        },
-      }
-    );
-
-    // オブジェクト
-    const imagePaths = [
-      "../../assets/images/philosophy-01.png",
-      "../../assets/images/philosophy-02.png",
-      "../../assets/images/philosophy-03.png",
-    ];
-    const numRectangles = imagePaths.length;
-    const rectangles = [];
-    for (let i = 0; i < numRectangles; i++) {
-      const rectangle = Bodies.rectangle(
-        Math.random() * (canvasWidth - 100) + 50,
-        Math.random() * (canvasHeight - 100) + 50,
-        160,
-        60,
-        {
-          friction: 0.9,
-          render: {
-            fillStyle: "#333",
-            sprite: {
-              texture: imagePaths[i],
-            },
-          },
-        }
-      );
-      rectangles.push(rectangle);
-    }
-    Composite.add(engine.world, rectangles);
-
-    const circle = Bodies.circle(
-      Math.random() * (canvasWidth - 100) + 50,
-      50 - 50,
-      50,
-      {
-        friction: 0.9,
-        render: {
-          fillStyle: "#f7d300",
-          sprite: {
-            texture: "../../assets/images/philosophy-04.png",
-          },
-        },
-      }
-    );
-
-    const triangle = Bodies.polygon(
-      Math.random() * (canvasWidth - 100) + 50,
-      50,
-      3,
-      60,
-      {
-        friction: 0.9,
-        render: {
-          fillStyle: "#ed6a02",
-        },
-      }
-    );
-
-    Composite.add(engine.world, [
-      leftWall,
-      rightWall,
-      bottomWall,
-      circle,
-      triangle,
-    ]);
-  }
 }
