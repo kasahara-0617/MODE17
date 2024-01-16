@@ -403,9 +403,9 @@ function initMatterJs() {
         friction: 0.9,
         render: {
           fillStyle: "#333",
-          sprite: {
-            texture: imagePaths[i],
-          },
+          // sprite: {
+          //   texture: imagePaths[i],
+          // },
         },
       }
     );
@@ -421,9 +421,9 @@ function initMatterJs() {
       friction: 0.9,
       render: {
         fillStyle: "#f7d300",
-        sprite: {
-          texture: "../../assets/images/philosophy-04.png",
-        },
+        // sprite: {
+        //   texture: "../../assets/images/philosophy-04.png",
+        // },
       },
     }
   );
