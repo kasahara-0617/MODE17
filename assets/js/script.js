@@ -308,7 +308,8 @@ function initMatterJs() {
   const engine = Engine.create();
 
   // キャンバスの生成
-  const canvas = $("#js-canvas")[0];
+	const canvas = document.getElementById("js-canvas");
+
 
   // レンダリングの設定
   const render = Render.create({
