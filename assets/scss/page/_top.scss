@@ -188,7 +188,7 @@
     aspect-ratio: 55/67;
     background-color: $white;
     border-radius: remCalc(220) remCalc(220) 0 0;
-		overflow: hidden;
+    overflow: hidden;
 
     @include mq(lg) {
       display: none;
