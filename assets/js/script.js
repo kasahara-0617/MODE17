@@ -386,6 +386,7 @@ function initMatterJs() {
   );
 
   // オブジェクト
+  const colors = ["#970b31", "#427935", "#003067"];
   const imagePaths = [
     "../../assets/images/philosophy-01.png",
     "../../assets/images/philosophy-02.png",
@@ -402,7 +403,7 @@ function initMatterJs() {
       {
         friction: 0.9,
         render: {
-          fillStyle: "#333",
+          fillStyle: colors[i],
           // sprite: {
           //   texture: imagePaths[i],
           // },
@@ -420,7 +421,7 @@ function initMatterJs() {
     {
       friction: 0.9,
       render: {
-        fillStyle: "#f7d300",
+        fillStyle: "#d7a600",
         // sprite: {
         //   texture: "../../assets/images/philosophy-04.png",
         // },
